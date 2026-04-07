@@ -250,20 +250,20 @@
             border: 1px solid rgba(201,168,76,0.1);
         }
         .price-table {
-            width: 100%; border-collapse: collapse; font-size: 0.85rem;
+            width: 100%; border-collapse: collapse; font-size: 0.78rem;
         }
         .price-table thead {
             background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.05));
         }
         .price-table th {
-            padding: 1rem; text-align: center;
+            padding: 0.7rem 0.5rem; text-align: center;
             color: var(--gold); font-weight: 600;
             font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
             border-bottom: 1px solid rgba(201,168,76,0.15);
         }
         .price-table th:first-child, .price-table td:first-child { text-align: left; }
         .price-table td {
-            padding: 0.65rem 1rem; color: var(--gray-light);
+            padding: 0.5rem 0.6rem; color: var(--gray-light);
             border-bottom: 1px solid rgba(255,255,255,0.03);
             text-align: center;
         }
@@ -640,7 +640,7 @@
                             <button class="quality-btn" onclick="showQuality('keratin', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('keratin', 'sdd')">Super Double Drawn</button>
                         </div>                            <div id="quality-keratin-sd" class="quality-panel" style="">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -743,9 +743,9 @@
                                             <td>€1359</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-keratin-dd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -848,9 +848,9 @@
                                             <td>€1609</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-keratin-sdd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -953,7 +953,7 @@
                                             <td>€1859</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>
             </div>
             <div id="tab-tape" class="tab-content" style="display:none;">
@@ -962,7 +962,7 @@
                             <button class="quality-btn" onclick="showQuality('tape', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('tape', 'sdd')">Super Double Drawn</button>
                         </div>                            <div id="quality-tape-sd" class="quality-panel" style="">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -1065,9 +1065,9 @@
                                             <td>€1389</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-tape-dd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -1170,9 +1170,9 @@
                                             <td>€1639</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-tape-sdd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -1275,7 +1275,7 @@
                                             <td>€1889</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>
             </div>
             <div id="tab-weft" class="tab-content" style="display:none;">
@@ -1284,7 +1284,7 @@
                             <button class="quality-btn" onclick="showQuality('weft', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('weft', 'sdd')">Super Double Drawn</button>
                         </div>                            <div id="quality-weft-sd" class="quality-panel" style="">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -1387,9 +1387,9 @@
                                             <td>€1449</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-weft-dd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -1492,9 +1492,9 @@
                                             <td>€1699</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-weft-sdd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -1597,7 +1597,7 @@
                                             <td>€1949</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>
             </div>
             <div id="tab-bulk" class="tab-content" style="display:none;">
@@ -1606,7 +1606,7 @@
                             <button class="quality-btn" onclick="showQuality('bulk', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('bulk', 'sdd')">Super Double Drawn</button>
                         </div>                            <div id="quality-bulk-sd" class="quality-panel" style="">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -1709,9 +1709,9 @@
                                             <td>€1289</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-bulk-dd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -1814,9 +1814,9 @@
                                             <td>€1539</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-bulk-sdd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -1919,7 +1919,7 @@
                                             <td>€1789</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>
             </div>
             <div id="tab-clip" class="tab-content" style="display:none;">
@@ -1928,7 +1928,7 @@
                             <button class="quality-btn" onclick="showQuality('clip', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('clip', 'sdd')">Super Double Drawn</button>
                         </div>                            <div id="quality-clip-sd" class="quality-panel" style="">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -2031,9 +2031,9 @@
                                             <td>€1509</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-clip-dd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -2136,9 +2136,9 @@
                                             <td>€1759</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>                            <div id="quality-clip-sdd" class="quality-panel" style="display: none;">
-                                <table class="price-table">
+                                <div class="price-table-wrap"><table class="price-table">
                                     <thead>
                                         <tr>
                                             <th>Länge</th>
@@ -2241,7 +2241,7 @@
                                             <td>€2009</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table></div>
                             </div>
             </div>
 
