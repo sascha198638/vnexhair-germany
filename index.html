@@ -268,36 +268,12 @@
             text-align: center;
         }
         .price-table tr:hover td { background: rgba(201,168,76,0.03); }
-        .quality-selector {
-            display: flex;
-            gap: 0.5rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-        .quality-btn {
-            padding: 0.6rem 1.2rem;
-            background: rgba(201,168,76,0.08);
-            border: 1px solid rgba(201,168,76,0.2);
-            color: var(--text);
-            font-size: 0.9rem;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
-        .quality-btn:hover {
-            background: rgba(201,168,76,0.15);
-            border-color: rgba(201,168,76,0.4);
-        }
-        .quality-btn.active {
-            background: var(--gold);
-            color: var(--black);
-            border-color: var(--gold);
-        }
-        .quality-content {
-            display: none;
-        }
+        .quality-selector { display: flex; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
+.quality-btn { padding: 0.5rem 1rem; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); color: #e0e0e0; font-size: 0.85rem; cursor: pointer; border-radius: 4px; transition: all 0.3s; font-family: 'Inter', sans-serif; }
+.quality-btn:hover { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.4); }
+.quality-btn.active { background: #c9a84c; color: #0a0a0a; border-color: #c9a84c; }
         
+
         .price-table .highlight { color: var(--gold); font-weight: 600; }
         .price-note {
             margin-top: 1.5rem; font-size: 0.8rem; color: var(--gray);
@@ -610,11 +586,11 @@
             <div class="product-card fade-in">
                 <div class="product-icon">&#10023;</div>
                 <h3>Clip & Ponytail</h3>
-                <p>Clip-In und Ponytail Extensions für schnelle, flexible Anwendungen. Perfekt für Ereignisse und für Kunden, die zeitlich flexibel sind. Hohe Qualität, einfache Bedienung.</p>
+                <p>Ultra-dünne, unsichtbare Tresse – die Premium-Variante. Extrem flach, kein Rückhaar, perfekt für dünnes Eigenhaar und nahtlose Übergänge.</p>
                 <div class="product-price-hint">ab ca. 169 &euro;/kg (Single Drawn)</div>
                 <div class="product-meta">
-                    <span class="product-tag">Clip-In System</span>
-                    <span class="product-tag">Ponytail Extensions</span>
+                    <span class="product-tag">Ultra-dünn</span>
+                    <span class="product-tag">Kein Rückhaar</span>
                     <span class="product-tag">8–32 Zoll</span>
                 </div>
             </div>
@@ -622,7 +598,7 @@
                 <div class="product-icon">&#8889;</div>
                 <h3>Rohhaar (Bulk)</h3>
                 <p>Unverarbeitetes, loses Echthaar für Ihre eigene Weiterverarbeitung. Perfekt für individuelle Bondings, Perücken oder Haarteile nach Maß.</p>
-                <div class="product-price-hint">ab ca. 53 &euro;/kg (Single Drawn, Naturfarbe)</div>
+                <div class="product-price-hint">ab ca. 80 &euro;/kg (Single Drawn, Naturfarbe)</div>
                 <div class="product-meta">
                     <span class="product-tag">Unverarbeitet</span>
                     <span class="product-tag">Eigene Verarbeitung</span>
@@ -641,510 +617,1648 @@
         <div class="divider"></div>
         <div class="section-subtitle">Alle Preise in Euro pro Kilogramm. Preise variieren je nach Produkttyp, Qualität und Farbe.</div>
 
-                <div class="price-tabs">
-            <div class="price-tab active" onclick="showTab('keratin')">Keratin-Bondings</div>
-            <div class="price-tab " onclick="showTab('tape')">Tape-In</div>
-            <div class="price-tab " onclick="showTab('weft')">Tressen</div>
-            <div class="price-tab " onclick="showTab('bulk')">Rohhaar</div>
-            <div class="price-tab " onclick="showTab('clip')">Clip & Ponytail</div>
-        </div>
+                    <div class="price-tabs">
+                <button class="tab-button active" onclick="showTab('keratin')">
+                    Keratin-Bondings
+                </button>
+                <button class="tab-button " onclick="showTab('tape')">
+                    Tape-In
+                </button>
+                <button class="tab-button " onclick="showTab('weft')">
+                    Tressen
+                </button>
+                <button class="tab-button " onclick="showTab('bulk')">
+                    Rohhaar
+                </button>
+                <button class="tab-button " onclick="showTab('clip')">
+                    Clip & Ponytail
+                </button>
+            </div>
+            <div id="tab-keratin" class="tab-pane active" >
+                    <div class="tab-content">
+                        <div class="quality-selector">
+                            <button class="quality-btn active" onclick="showQuality('keratin', 'sd')">Single Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('keratin', 'dd')">Double Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('keratin', 'sdd')">Super Double Drawn</button>
+                        </div>                            <div id="quality-keratin-sd" class="price-table" style="">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€150</td>
+                                            <td>€269</td>
+                                            <td>€319</td>
+                                            <td>€359</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€169</td>
+                                            <td>€309</td>
+                                            <td>€359</td>
+                                            <td>€399</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€199</td>
+                                            <td>€329</td>
+                                            <td>€399</td>
+                                            <td>€439</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€215</td>
+                                            <td>€349</td>
+                                            <td>€439</td>
+                                            <td>€479</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€249</td>
+                                            <td>€389</td>
+                                            <td>€479</td>
+                                            <td>€519</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€319</td>
+                                            <td>€459</td>
+                                            <td>€579</td>
+                                            <td>€619</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€419</td>
+                                            <td>€559</td>
+                                            <td>€719</td>
+                                            <td>€759</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€469</td>
+                                            <td>€609</td>
+                                            <td>€779</td>
+                                            <td>€819</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€549</td>
+                                            <td>€689</td>
+                                            <td>€909</td>
+                                            <td>€949</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€649</td>
+                                            <td>€819</td>
+                                            <td>€969</td>
+                                            <td>€1009</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€749</td>
+                                            <td>€879</td>
+                                            <td>€1099</td>
+                                            <td>€1139</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€819</td>
+                                            <td>€959</td>
+                                            <td>€1199</td>
+                                            <td>€1239</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€939</td>
+                                            <td>€1070</td>
+                                            <td>€1319</td>
+                                            <td>€1359</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-keratin-dd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€169</td>
+                                            <td>€289</td>
+                                            <td>€369</td>
+                                            <td>€409</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€189</td>
+                                            <td>€319</td>
+                                            <td>€409</td>
+                                            <td>€449</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€209</td>
+                                            <td>€359</td>
+                                            <td>€449</td>
+                                            <td>€489</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€249</td>
+                                            <td>€389</td>
+                                            <td>€489</td>
+                                            <td>€529</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€279</td>
+                                            <td>€409</td>
+                                            <td>€579</td>
+                                            <td>€619</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€379</td>
+                                            <td>€499</td>
+                                            <td>€679</td>
+                                            <td>€719</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€499</td>
+                                            <td>€629</td>
+                                            <td>€869</td>
+                                            <td>€909</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€559</td>
+                                            <td>€679</td>
+                                            <td>€929</td>
+                                            <td>€969</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€679</td>
+                                            <td>€789</td>
+                                            <td>€1109</td>
+                                            <td>€1149</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€769</td>
+                                            <td>€859</td>
+                                            <td>€1169</td>
+                                            <td>€1209</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€869</td>
+                                            <td>€969</td>
+                                            <td>€1299</td>
+                                            <td>€1339</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€959</td>
+                                            <td>€1059</td>
+                                            <td>€1449</td>
+                                            <td>€1489</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1029</td>
+                                            <td>€1159</td>
+                                            <td>€1569</td>
+                                            <td>€1609</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-keratin-sdd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€180</td>
+                                            <td>€299</td>
+                                            <td>€419</td>
+                                            <td>€459</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€209</td>
+                                            <td>€339</td>
+                                            <td>€459</td>
+                                            <td>€499</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€239</td>
+                                            <td>€369</td>
+                                            <td>€499</td>
+                                            <td>€539</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€279</td>
+                                            <td>€409</td>
+                                            <td>€539</td>
+                                            <td>€579</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€369</td>
+                                            <td>€499</td>
+                                            <td>€679</td>
+                                            <td>€719</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€469</td>
+                                            <td>€599</td>
+                                            <td>€779</td>
+                                            <td>€819</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€569</td>
+                                            <td>€709</td>
+                                            <td>€1019</td>
+                                            <td>€1059</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€639</td>
+                                            <td>€779</td>
+                                            <td>€1079</td>
+                                            <td>€1119</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€739</td>
+                                            <td>€879</td>
+                                            <td>€1309</td>
+                                            <td>€1349</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€849</td>
+                                            <td>€979</td>
+                                            <td>€1369</td>
+                                            <td>€1409</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€949</td>
+                                            <td>€1089</td>
+                                            <td>€1499</td>
+                                            <td>€1539</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€1049</td>
+                                            <td>€1189</td>
+                                            <td>€1699</td>
+                                            <td>€1739</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1149</td>
+                                            <td>€1289</td>
+                                            <td>€1819</td>
+                                            <td>€1859</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                    </div>
+            </div>
+            <div id="tab-tape" class="tab-pane " style="display:none;">
+                    <div class="tab-content">
+                        <div class="quality-selector">
+                            <button class="quality-btn active" onclick="showQuality('tape', 'sd')">Single Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('tape', 'dd')">Double Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('tape', 'sdd')">Super Double Drawn</button>
+                        </div>                            <div id="quality-tape-sd" class="price-table" style="">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€180</td>
+                                            <td>€299</td>
+                                            <td>€349</td>
+                                            <td>€389</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€199</td>
+                                            <td>€339</td>
+                                            <td>€389</td>
+                                            <td>€429</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€229</td>
+                                            <td>€359</td>
+                                            <td>€429</td>
+                                            <td>€469</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€245</td>
+                                            <td>€379</td>
+                                            <td>€469</td>
+                                            <td>€509</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€279</td>
+                                            <td>€419</td>
+                                            <td>€509</td>
+                                            <td>€549</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€349</td>
+                                            <td>€489</td>
+                                            <td>€609</td>
+                                            <td>€649</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€449</td>
+                                            <td>€589</td>
+                                            <td>€749</td>
+                                            <td>€789</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€499</td>
+                                            <td>€639</td>
+                                            <td>€809</td>
+                                            <td>€849</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€579</td>
+                                            <td>€719</td>
+                                            <td>€939</td>
+                                            <td>€979</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€679</td>
+                                            <td>€849</td>
+                                            <td>€999</td>
+                                            <td>€1039</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€779</td>
+                                            <td>€909</td>
+                                            <td>€1129</td>
+                                            <td>€1169</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€849</td>
+                                            <td>€989</td>
+                                            <td>€1229</td>
+                                            <td>€1269</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€969</td>
+                                            <td>€1100</td>
+                                            <td>€1349</td>
+                                            <td>€1389</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-tape-dd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€199</td>
+                                            <td>€319</td>
+                                            <td>€399</td>
+                                            <td>€439</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€219</td>
+                                            <td>€349</td>
+                                            <td>€439</td>
+                                            <td>€479</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€239</td>
+                                            <td>€389</td>
+                                            <td>€479</td>
+                                            <td>€519</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€279</td>
+                                            <td>€419</td>
+                                            <td>€519</td>
+                                            <td>€559</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€309</td>
+                                            <td>€439</td>
+                                            <td>€609</td>
+                                            <td>€649</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€409</td>
+                                            <td>€529</td>
+                                            <td>€709</td>
+                                            <td>€749</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€529</td>
+                                            <td>€659</td>
+                                            <td>€899</td>
+                                            <td>€939</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€589</td>
+                                            <td>€709</td>
+                                            <td>€959</td>
+                                            <td>€999</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€709</td>
+                                            <td>€819</td>
+                                            <td>€1139</td>
+                                            <td>€1179</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€799</td>
+                                            <td>€889</td>
+                                            <td>€1199</td>
+                                            <td>€1239</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€899</td>
+                                            <td>€999</td>
+                                            <td>€1329</td>
+                                            <td>€1369</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€989</td>
+                                            <td>€1089</td>
+                                            <td>€1479</td>
+                                            <td>€1519</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1059</td>
+                                            <td>€1189</td>
+                                            <td>€1599</td>
+                                            <td>€1639</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-tape-sdd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€210</td>
+                                            <td>€329</td>
+                                            <td>€449</td>
+                                            <td>€489</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€239</td>
+                                            <td>€369</td>
+                                            <td>€489</td>
+                                            <td>€529</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€269</td>
+                                            <td>€399</td>
+                                            <td>€529</td>
+                                            <td>€569</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€309</td>
+                                            <td>€439</td>
+                                            <td>€569</td>
+                                            <td>€609</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€399</td>
+                                            <td>€529</td>
+                                            <td>€709</td>
+                                            <td>€749</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€499</td>
+                                            <td>€629</td>
+                                            <td>€809</td>
+                                            <td>€849</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€599</td>
+                                            <td>€739</td>
+                                            <td>€1049</td>
+                                            <td>€1089</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€669</td>
+                                            <td>€809</td>
+                                            <td>€1109</td>
+                                            <td>€1149</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€769</td>
+                                            <td>€909</td>
+                                            <td>€1339</td>
+                                            <td>€1379</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€879</td>
+                                            <td>€1009</td>
+                                            <td>€1399</td>
+                                            <td>€1439</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€979</td>
+                                            <td>€1119</td>
+                                            <td>€1529</td>
+                                            <td>€1569</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€1079</td>
+                                            <td>€1219</td>
+                                            <td>€1729</td>
+                                            <td>€1769</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1179</td>
+                                            <td>€1319</td>
+                                            <td>€1849</td>
+                                            <td>€1889</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                    </div>
+            </div>
+            <div id="tab-weft" class="tab-pane " style="display:none;">
+                    <div class="tab-content">
+                        <div class="quality-selector">
+                            <button class="quality-btn active" onclick="showQuality('weft', 'sd')">Single Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('weft', 'dd')">Double Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('weft', 'sdd')">Super Double Drawn</button>
+                        </div>                            <div id="quality-weft-sd" class="price-table" style="">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€109</td>
+                                            <td>€249</td>
+                                            <td>€299</td>
+                                            <td>€339</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€139</td>
+                                            <td>€269</td>
+                                            <td>€339</td>
+                                            <td>€379</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€155</td>
+                                            <td>€289</td>
+                                            <td>€379</td>
+                                            <td>€419</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€189</td>
+                                            <td>€329</td>
+                                            <td>€419</td>
+                                            <td>€459</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€259</td>
+                                            <td>€399</td>
+                                            <td>€519</td>
+                                            <td>€559</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€359</td>
+                                            <td>€499</td>
+                                            <td>€659</td>
+                                            <td>€699</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€409</td>
+                                            <td>€549</td>
+                                            <td>€719</td>
+                                            <td>€759</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€489</td>
+                                            <td>€629</td>
+                                            <td>€849</td>
+                                            <td>€889</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€589</td>
+                                            <td>€759</td>
+                                            <td>€909</td>
+                                            <td>€949</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€689</td>
+                                            <td>€819</td>
+                                            <td>€1039</td>
+                                            <td>€1079</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€759</td>
+                                            <td>€899</td>
+                                            <td>€1139</td>
+                                            <td>€1179</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€879</td>
+                                            <td>€1010</td>
+                                            <td>€1259</td>
+                                            <td>€1299</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1029</td>
+                                            <td>€1160</td>
+                                            <td>€1409</td>
+                                            <td>€1449</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-weft-dd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€129</td>
+                                            <td>€259</td>
+                                            <td>€349</td>
+                                            <td>€389</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€149</td>
+                                            <td>€299</td>
+                                            <td>€389</td>
+                                            <td>€429</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€189</td>
+                                            <td>€329</td>
+                                            <td>€429</td>
+                                            <td>€469</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€219</td>
+                                            <td>€349</td>
+                                            <td>€519</td>
+                                            <td>€559</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€319</td>
+                                            <td>€439</td>
+                                            <td>€619</td>
+                                            <td>€659</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€439</td>
+                                            <td>€569</td>
+                                            <td>€809</td>
+                                            <td>€849</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€499</td>
+                                            <td>€619</td>
+                                            <td>€869</td>
+                                            <td>€909</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€619</td>
+                                            <td>€729</td>
+                                            <td>€1049</td>
+                                            <td>€1089</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€709</td>
+                                            <td>€799</td>
+                                            <td>€1109</td>
+                                            <td>€1149</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€809</td>
+                                            <td>€909</td>
+                                            <td>€1239</td>
+                                            <td>€1279</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€899</td>
+                                            <td>€999</td>
+                                            <td>€1389</td>
+                                            <td>€1429</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€969</td>
+                                            <td>€1099</td>
+                                            <td>€1509</td>
+                                            <td>€1549</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1119</td>
+                                            <td>€1249</td>
+                                            <td>€1659</td>
+                                            <td>€1699</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-weft-sdd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€149</td>
+                                            <td>€279</td>
+                                            <td>€399</td>
+                                            <td>€439</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€179</td>
+                                            <td>€309</td>
+                                            <td>€439</td>
+                                            <td>€479</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€219</td>
+                                            <td>€349</td>
+                                            <td>€479</td>
+                                            <td>€519</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€309</td>
+                                            <td>€439</td>
+                                            <td>€619</td>
+                                            <td>€659</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€409</td>
+                                            <td>€539</td>
+                                            <td>€719</td>
+                                            <td>€759</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€509</td>
+                                            <td>€649</td>
+                                            <td>€959</td>
+                                            <td>€999</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€579</td>
+                                            <td>€719</td>
+                                            <td>€1019</td>
+                                            <td>€1059</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€679</td>
+                                            <td>€819</td>
+                                            <td>€1249</td>
+                                            <td>€1289</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€789</td>
+                                            <td>€919</td>
+                                            <td>€1309</td>
+                                            <td>€1349</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€889</td>
+                                            <td>€1029</td>
+                                            <td>€1439</td>
+                                            <td>€1479</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€989</td>
+                                            <td>€1129</td>
+                                            <td>€1639</td>
+                                            <td>€1679</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€1089</td>
+                                            <td>€1229</td>
+                                            <td>€1759</td>
+                                            <td>€1799</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1239</td>
+                                            <td>€1379</td>
+                                            <td>€1909</td>
+                                            <td>€1949</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                    </div>
+            </div>
+            <div id="tab-bulk" class="tab-pane " style="display:none;">
+                    <div class="tab-content">
+                        <div class="quality-selector">
+                            <button class="quality-btn active" onclick="showQuality('bulk', 'sd')">Single Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('bulk', 'dd')">Double Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('bulk', 'sdd')">Super Double Drawn</button>
+                        </div>                            <div id="quality-bulk-sd" class="price-table" style="">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€80</td>
+                                            <td>€199</td>
+                                            <td>€249</td>
+                                            <td>€289</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€99</td>
+                                            <td>€239</td>
+                                            <td>€289</td>
+                                            <td>€329</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€129</td>
+                                            <td>€259</td>
+                                            <td>€329</td>
+                                            <td>€369</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€145</td>
+                                            <td>€279</td>
+                                            <td>€369</td>
+                                            <td>€409</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€179</td>
+                                            <td>€319</td>
+                                            <td>€409</td>
+                                            <td>€449</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€249</td>
+                                            <td>€389</td>
+                                            <td>€509</td>
+                                            <td>€549</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€349</td>
+                                            <td>€489</td>
+                                            <td>€649</td>
+                                            <td>€689</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€399</td>
+                                            <td>€539</td>
+                                            <td>€709</td>
+                                            <td>€749</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€479</td>
+                                            <td>€619</td>
+                                            <td>€839</td>
+                                            <td>€879</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€579</td>
+                                            <td>€749</td>
+                                            <td>€899</td>
+                                            <td>€939</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€679</td>
+                                            <td>€809</td>
+                                            <td>€1029</td>
+                                            <td>€1069</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€749</td>
+                                            <td>€889</td>
+                                            <td>€1129</td>
+                                            <td>€1169</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€869</td>
+                                            <td>€1000</td>
+                                            <td>€1249</td>
+                                            <td>€1289</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-bulk-dd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€99</td>
+                                            <td>€219</td>
+                                            <td>€299</td>
+                                            <td>€339</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€119</td>
+                                            <td>€249</td>
+                                            <td>€339</td>
+                                            <td>€379</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€139</td>
+                                            <td>€289</td>
+                                            <td>€379</td>
+                                            <td>€419</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€179</td>
+                                            <td>€319</td>
+                                            <td>€419</td>
+                                            <td>€459</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€209</td>
+                                            <td>€339</td>
+                                            <td>€509</td>
+                                            <td>€549</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€309</td>
+                                            <td>€429</td>
+                                            <td>€609</td>
+                                            <td>€649</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€429</td>
+                                            <td>€559</td>
+                                            <td>€799</td>
+                                            <td>€839</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€489</td>
+                                            <td>€609</td>
+                                            <td>€859</td>
+                                            <td>€899</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€609</td>
+                                            <td>€719</td>
+                                            <td>€1039</td>
+                                            <td>€1079</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€699</td>
+                                            <td>€789</td>
+                                            <td>€1099</td>
+                                            <td>€1139</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€799</td>
+                                            <td>€899</td>
+                                            <td>€1229</td>
+                                            <td>€1269</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€889</td>
+                                            <td>€989</td>
+                                            <td>€1379</td>
+                                            <td>€1419</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€959</td>
+                                            <td>€1089</td>
+                                            <td>€1499</td>
+                                            <td>€1539</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-bulk-sdd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€110</td>
+                                            <td>€229</td>
+                                            <td>€349</td>
+                                            <td>€389</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€139</td>
+                                            <td>€269</td>
+                                            <td>€389</td>
+                                            <td>€429</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€169</td>
+                                            <td>€299</td>
+                                            <td>€429</td>
+                                            <td>€469</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€209</td>
+                                            <td>€339</td>
+                                            <td>€469</td>
+                                            <td>€509</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€299</td>
+                                            <td>€429</td>
+                                            <td>€609</td>
+                                            <td>€649</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€399</td>
+                                            <td>€529</td>
+                                            <td>€709</td>
+                                            <td>€749</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€499</td>
+                                            <td>€639</td>
+                                            <td>€949</td>
+                                            <td>€989</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€569</td>
+                                            <td>€709</td>
+                                            <td>€1009</td>
+                                            <td>€1049</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€669</td>
+                                            <td>€809</td>
+                                            <td>€1239</td>
+                                            <td>€1279</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€779</td>
+                                            <td>€909</td>
+                                            <td>€1299</td>
+                                            <td>€1339</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€879</td>
+                                            <td>€1019</td>
+                                            <td>€1429</td>
+                                            <td>€1469</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€979</td>
+                                            <td>€1119</td>
+                                            <td>€1629</td>
+                                            <td>€1669</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1079</td>
+                                            <td>€1219</td>
+                                            <td>€1749</td>
+                                            <td>€1789</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                    </div>
+            </div>
+            <div id="tab-clip" class="tab-pane " style="display:none;">
+                    <div class="tab-content">
+                        <div class="quality-selector">
+                            <button class="quality-btn active" onclick="showQuality('clip', 'sd')">Single Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('clip', 'dd')">Double Drawn</button>
+                            <button class="quality-btn" onclick="showQuality('clip', 'sdd')">Super Double Drawn</button>
+                        </div>                            <div id="quality-clip-sd" class="price-table" style="">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€169</td>
+                                            <td>€309</td>
+                                            <td>€359</td>
+                                            <td>€399</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€199</td>
+                                            <td>€329</td>
+                                            <td>€399</td>
+                                            <td>€439</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€215</td>
+                                            <td>€349</td>
+                                            <td>€439</td>
+                                            <td>€479</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€249</td>
+                                            <td>€389</td>
+                                            <td>€479</td>
+                                            <td>€519</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€319</td>
+                                            <td>€459</td>
+                                            <td>€579</td>
+                                            <td>€619</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€419</td>
+                                            <td>€559</td>
+                                            <td>€719</td>
+                                            <td>€759</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€469</td>
+                                            <td>€609</td>
+                                            <td>€779</td>
+                                            <td>€819</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€549</td>
+                                            <td>€689</td>
+                                            <td>€909</td>
+                                            <td>€949</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€649</td>
+                                            <td>€819</td>
+                                            <td>€969</td>
+                                            <td>€1009</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€749</td>
+                                            <td>€879</td>
+                                            <td>€1099</td>
+                                            <td>€1139</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€819</td>
+                                            <td>€959</td>
+                                            <td>€1199</td>
+                                            <td>€1239</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€939</td>
+                                            <td>€1070</td>
+                                            <td>€1319</td>
+                                            <td>€1359</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1089</td>
+                                            <td>€1220</td>
+                                            <td>€1469</td>
+                                            <td>€1509</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-clip-dd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€189</td>
+                                            <td>€319</td>
+                                            <td>€409</td>
+                                            <td>€449</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€209</td>
+                                            <td>€359</td>
+                                            <td>€449</td>
+                                            <td>€489</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€249</td>
+                                            <td>€389</td>
+                                            <td>€489</td>
+                                            <td>€529</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€279</td>
+                                            <td>€409</td>
+                                            <td>€579</td>
+                                            <td>€619</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€379</td>
+                                            <td>€499</td>
+                                            <td>€679</td>
+                                            <td>€719</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€499</td>
+                                            <td>€629</td>
+                                            <td>€869</td>
+                                            <td>€909</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€559</td>
+                                            <td>€679</td>
+                                            <td>€929</td>
+                                            <td>€969</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€679</td>
+                                            <td>€789</td>
+                                            <td>€1109</td>
+                                            <td>€1149</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€769</td>
+                                            <td>€859</td>
+                                            <td>€1169</td>
+                                            <td>€1209</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€869</td>
+                                            <td>€969</td>
+                                            <td>€1299</td>
+                                            <td>€1339</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€959</td>
+                                            <td>€1059</td>
+                                            <td>€1449</td>
+                                            <td>€1489</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€1029</td>
+                                            <td>€1159</td>
+                                            <td>€1569</td>
+                                            <td>€1609</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1179</td>
+                                            <td>€1309</td>
+                                            <td>€1719</td>
+                                            <td>€1759</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            <div id="quality-clip-sdd" class="price-table" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Länge</th>
+                                            <th>Naturfarbe #1,#1b</th>
+                                            <th>Dunkle Farben #2-#30</th>
+                                            <th>Helle Farben #10-#20</th>
+                                            <th>Blond #22-#120</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="price-row">
+                                            <td class="length-cell">20cm (8")</td>
+                                            <td>€209</td>
+                                            <td>€339</td>
+                                            <td>€459</td>
+                                            <td>€499</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">25cm (10")</td>
+                                            <td>€239</td>
+                                            <td>€369</td>
+                                            <td>€499</td>
+                                            <td>€539</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">30cm (12")</td>
+                                            <td>€279</td>
+                                            <td>€409</td>
+                                            <td>€539</td>
+                                            <td>€579</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">35cm (14")</td>
+                                            <td>€369</td>
+                                            <td>€499</td>
+                                            <td>€679</td>
+                                            <td>€719</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">40cm (16")</td>
+                                            <td>€469</td>
+                                            <td>€599</td>
+                                            <td>€779</td>
+                                            <td>€819</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">45cm (18")</td>
+                                            <td>€569</td>
+                                            <td>€709</td>
+                                            <td>€1019</td>
+                                            <td>€1059</td>
+                                        </tr>
+                                        <tr class="price-row highlight">
+                                            <td class="length-cell">50cm (20")</td>
+                                            <td>€639</td>
+                                            <td>€779</td>
+                                            <td>€1079</td>
+                                            <td>€1119</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">55cm (22")</td>
+                                            <td>€739</td>
+                                            <td>€879</td>
+                                            <td>€1309</td>
+                                            <td>€1349</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">60cm (24")</td>
+                                            <td>€849</td>
+                                            <td>€979</td>
+                                            <td>€1369</td>
+                                            <td>€1409</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">65cm (26")</td>
+                                            <td>€949</td>
+                                            <td>€1089</td>
+                                            <td>€1499</td>
+                                            <td>€1539</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">70cm (28")</td>
+                                            <td>€1049</td>
+                                            <td>€1189</td>
+                                            <td>€1699</td>
+                                            <td>€1739</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">75cm (30")</td>
+                                            <td>€1149</td>
+                                            <td>€1289</td>
+                                            <td>€1819</td>
+                                            <td>€1859</td>
+                                        </tr>
+                                        <tr class="price-row">
+                                            <td class="length-cell">80cm (32")</td>
+                                            <td>€1299</td>
+                                            <td>€1439</td>
+                                            <td>€1969</td>
+                                            <td>€2009</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                    </div>
+            </div>
 
-        <div class="tab-content active" id="tab-keratin">
-            <div class="quality-selector">
-                <button class="quality-btn active" onclick="showQuality('keratin', 'Single-Drawn')">Single Drawn</button>
-                <button class="quality-btn " onclick="showQuality('keratin', 'Double-Drawn')">Double Drawn</button>
-                <button class="quality-btn " onclick="showQuality('keratin', 'Super-Double-Drawn')">Super Double Drawn</button>
-            </div>
-            <div class="quality-content" id="quality-keratin-Single-Drawn" style="display: block;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>150 &euro;</td><td>269 &euro;</td><td>319 &euro;</td><td>359 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>169 &euro;</td><td>309 &euro;</td><td>359 &euro;</td><td>399 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>199 &euro;</td><td>329 &euro;</td><td>399 &euro;</td><td>439 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>215 &euro;</td><td>349 &euro;</td><td>439 &euro;</td><td>479 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>249 &euro;</td><td>389 &euro;</td><td>479 &euro;</td><td>519 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">319 &euro;</span></td><td class="highlight"><span class="highlight">459 &euro;</span></td><td class="highlight"><span class="highlight">579 &euro;</span></td><td class="highlight"><span class="highlight">619 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">419 &euro;</span></td><td class="highlight"><span class="highlight">559 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td><td class="highlight"><span class="highlight">759 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>469 &euro;</td><td>609 &euro;</td><td>779 &euro;</td><td>819 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>549 &euro;</td><td>689 &euro;</td><td>909 &euro;</td><td>949 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>649 &euro;</td><td>819 &euro;</td><td>969 &euro;</td><td>1009 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>749 &euro;</td><td>879 &euro;</td><td>1099 &euro;</td><td>1139 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>819 &euro;</td><td>959 &euro;</td><td>1199 &euro;</td><td>1239 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>939 &euro;</td><td>1070 &euro;</td><td>1319 &euro;</td><td>1359 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-keratin-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>169 &euro;</td><td>289 &euro;</td><td>369 &euro;</td><td>409 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>189 &euro;</td><td>319 &euro;</td><td>409 &euro;</td><td>449 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>209 &euro;</td><td>359 &euro;</td><td>449 &euro;</td><td>489 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>249 &euro;</td><td>389 &euro;</td><td>489 &euro;</td><td>529 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>279 &euro;</td><td>409 &euro;</td><td>579 &euro;</td><td>619 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">379 &euro;</span></td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">679 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">629 &euro;</span></td><td class="highlight"><span class="highlight">869 &euro;</span></td><td class="highlight"><span class="highlight">909 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>559 &euro;</td><td>679 &euro;</td><td>929 &euro;</td><td>969 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>679 &euro;</td><td>789 &euro;</td><td>1109 &euro;</td><td>1149 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>769 &euro;</td><td>859 &euro;</td><td>1169 &euro;</td><td>1209 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>869 &euro;</td><td>969 &euro;</td><td>1299 &euro;</td><td>1339 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>959 &euro;</td><td>1059 &euro;</td><td>1449 &euro;</td><td>1489 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1029 &euro;</td><td>1159 &euro;</td><td>1569 &euro;</td><td>1609 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-keratin-Super-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>180 &euro;</td><td>299 &euro;</td><td>419 &euro;</td><td>459 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>209 &euro;</td><td>339 &euro;</td><td>459 &euro;</td><td>499 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>239 &euro;</td><td>369 &euro;</td><td>499 &euro;</td><td>539 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>279 &euro;</td><td>409 &euro;</td><td>539 &euro;</td><td>579 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>369 &euro;</td><td>499 &euro;</td><td>679 &euro;</td><td>719 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">469 &euro;</span></td><td class="highlight"><span class="highlight">599 &euro;</span></td><td class="highlight"><span class="highlight">779 &euro;</span></td><td class="highlight"><span class="highlight">819 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">569 &euro;</span></td><td class="highlight"><span class="highlight">709 &euro;</span></td><td class="highlight"><span class="highlight">1019 &euro;</span></td><td class="highlight"><span class="highlight">1059 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>639 &euro;</td><td>779 &euro;</td><td>1079 &euro;</td><td>1119 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>739 &euro;</td><td>879 &euro;</td><td>1309 &euro;</td><td>1349 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>849 &euro;</td><td>979 &euro;</td><td>1369 &euro;</td><td>1409 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>949 &euro;</td><td>1089 &euro;</td><td>1499 &euro;</td><td>1539 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>1049 &euro;</td><td>1189 &euro;</td><td>1699 &euro;</td><td>1739 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1149 &euro;</td><td>1289 &euro;</td><td>1819 &euro;</td><td>1859 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-content " id="tab-tape">
-            <div class="quality-selector">
-                <button class="quality-btn active" onclick="showQuality('tape', 'Single-Drawn')">Single Drawn</button>
-                <button class="quality-btn " onclick="showQuality('tape', 'Double-Drawn')">Double Drawn</button>
-                <button class="quality-btn " onclick="showQuality('tape', 'Super-Double-Drawn')">Super Double Drawn</button>
-            </div>
-            <div class="quality-content" id="quality-tape-Single-Drawn" style="display: block;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>180 &euro;</td><td>299 &euro;</td><td>349 &euro;</td><td>389 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>199 &euro;</td><td>339 &euro;</td><td>389 &euro;</td><td>429 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>229 &euro;</td><td>359 &euro;</td><td>429 &euro;</td><td>469 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>245 &euro;</td><td>379 &euro;</td><td>469 &euro;</td><td>509 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>279 &euro;</td><td>419 &euro;</td><td>509 &euro;</td><td>549 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">349 &euro;</span></td><td class="highlight"><span class="highlight">489 &euro;</span></td><td class="highlight"><span class="highlight">609 &euro;</span></td><td class="highlight"><span class="highlight">649 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">449 &euro;</span></td><td class="highlight"><span class="highlight">589 &euro;</span></td><td class="highlight"><span class="highlight">749 &euro;</span></td><td class="highlight"><span class="highlight">789 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>499 &euro;</td><td>639 &euro;</td><td>809 &euro;</td><td>849 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>579 &euro;</td><td>719 &euro;</td><td>939 &euro;</td><td>979 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>679 &euro;</td><td>849 &euro;</td><td>999 &euro;</td><td>1039 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>779 &euro;</td><td>909 &euro;</td><td>1129 &euro;</td><td>1169 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>849 &euro;</td><td>989 &euro;</td><td>1229 &euro;</td><td>1269 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>969 &euro;</td><td>1100 &euro;</td><td>1349 &euro;</td><td>1389 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-tape-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>199 &euro;</td><td>319 &euro;</td><td>399 &euro;</td><td>439 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>219 &euro;</td><td>349 &euro;</td><td>439 &euro;</td><td>479 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>239 &euro;</td><td>389 &euro;</td><td>479 &euro;</td><td>519 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>279 &euro;</td><td>419 &euro;</td><td>519 &euro;</td><td>559 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>309 &euro;</td><td>439 &euro;</td><td>609 &euro;</td><td>649 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">409 &euro;</span></td><td class="highlight"><span class="highlight">529 &euro;</span></td><td class="highlight"><span class="highlight">709 &euro;</span></td><td class="highlight"><span class="highlight">749 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">529 &euro;</span></td><td class="highlight"><span class="highlight">659 &euro;</span></td><td class="highlight"><span class="highlight">899 &euro;</span></td><td class="highlight"><span class="highlight">939 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>589 &euro;</td><td>709 &euro;</td><td>959 &euro;</td><td>999 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>709 &euro;</td><td>819 &euro;</td><td>1139 &euro;</td><td>1179 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>799 &euro;</td><td>889 &euro;</td><td>1199 &euro;</td><td>1239 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>899 &euro;</td><td>999 &euro;</td><td>1329 &euro;</td><td>1369 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>989 &euro;</td><td>1089 &euro;</td><td>1479 &euro;</td><td>1519 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1059 &euro;</td><td>1189 &euro;</td><td>1599 &euro;</td><td>1639 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-tape-Super-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>210 &euro;</td><td>329 &euro;</td><td>449 &euro;</td><td>489 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>239 &euro;</td><td>369 &euro;</td><td>489 &euro;</td><td>529 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>269 &euro;</td><td>399 &euro;</td><td>529 &euro;</td><td>569 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>309 &euro;</td><td>439 &euro;</td><td>569 &euro;</td><td>609 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>399 &euro;</td><td>529 &euro;</td><td>709 &euro;</td><td>749 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">629 &euro;</span></td><td class="highlight"><span class="highlight">809 &euro;</span></td><td class="highlight"><span class="highlight">849 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">599 &euro;</span></td><td class="highlight"><span class="highlight">739 &euro;</span></td><td class="highlight"><span class="highlight">1049 &euro;</span></td><td class="highlight"><span class="highlight">1089 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>669 &euro;</td><td>809 &euro;</td><td>1109 &euro;</td><td>1149 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>769 &euro;</td><td>909 &euro;</td><td>1339 &euro;</td><td>1379 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>879 &euro;</td><td>1009 &euro;</td><td>1399 &euro;</td><td>1439 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>979 &euro;</td><td>1119 &euro;</td><td>1529 &euro;</td><td>1569 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>1079 &euro;</td><td>1219 &euro;</td><td>1729 &euro;</td><td>1769 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1179 &euro;</td><td>1319 &euro;</td><td>1849 &euro;</td><td>1889 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-content " id="tab-weft">
-            <div class="quality-selector">
-                <button class="quality-btn active" onclick="showQuality('weft', 'Single-Drawn')">Single Drawn</button>
-                <button class="quality-btn " onclick="showQuality('weft', 'Double-Drawn')">Double Drawn</button>
-                <button class="quality-btn " onclick="showQuality('weft', 'Super-Double-Drawn')">Super Double Drawn</button>
-            </div>
-            <div class="quality-content" id="quality-weft-Single-Drawn" style="display: block;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>109 &euro;</td><td>249 &euro;</td><td>299 &euro;</td><td>339 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>139 &euro;</td><td>269 &euro;</td><td>339 &euro;</td><td>379 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>155 &euro;</td><td>289 &euro;</td><td>379 &euro;</td><td>419 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>189 &euro;</td><td>329 &euro;</td><td>419 &euro;</td><td>459 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>259 &euro;</td><td>399 &euro;</td><td>519 &euro;</td><td>559 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">359 &euro;</span></td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">659 &euro;</span></td><td class="highlight"><span class="highlight">699 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">409 &euro;</span></td><td class="highlight"><span class="highlight">549 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td><td class="highlight"><span class="highlight">759 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>489 &euro;</td><td>629 &euro;</td><td>849 &euro;</td><td>889 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>589 &euro;</td><td>759 &euro;</td><td>909 &euro;</td><td>949 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>689 &euro;</td><td>819 &euro;</td><td>1039 &euro;</td><td>1079 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>759 &euro;</td><td>899 &euro;</td><td>1139 &euro;</td><td>1179 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>879 &euro;</td><td>1010 &euro;</td><td>1259 &euro;</td><td>1299 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1029 &euro;</td><td>1160 &euro;</td><td>1409 &euro;</td><td>1449 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-weft-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>129 &euro;</td><td>259 &euro;</td><td>349 &euro;</td><td>389 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>149 &euro;</td><td>299 &euro;</td><td>389 &euro;</td><td>429 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>189 &euro;</td><td>329 &euro;</td><td>429 &euro;</td><td>469 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>219 &euro;</td><td>349 &euro;</td><td>519 &euro;</td><td>559 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>319 &euro;</td><td>439 &euro;</td><td>619 &euro;</td><td>659 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">439 &euro;</span></td><td class="highlight"><span class="highlight">569 &euro;</span></td><td class="highlight"><span class="highlight">809 &euro;</span></td><td class="highlight"><span class="highlight">849 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">619 &euro;</span></td><td class="highlight"><span class="highlight">869 &euro;</span></td><td class="highlight"><span class="highlight">909 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>619 &euro;</td><td>729 &euro;</td><td>1049 &euro;</td><td>1089 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>709 &euro;</td><td>799 &euro;</td><td>1109 &euro;</td><td>1149 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>809 &euro;</td><td>909 &euro;</td><td>1239 &euro;</td><td>1279 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>899 &euro;</td><td>999 &euro;</td><td>1389 &euro;</td><td>1429 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>969 &euro;</td><td>1099 &euro;</td><td>1509 &euro;</td><td>1549 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1119 &euro;</td><td>1249 &euro;</td><td>1659 &euro;</td><td>1699 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-weft-Super-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>149 &euro;</td><td>279 &euro;</td><td>399 &euro;</td><td>439 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>179 &euro;</td><td>309 &euro;</td><td>439 &euro;</td><td>479 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>219 &euro;</td><td>349 &euro;</td><td>479 &euro;</td><td>519 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>309 &euro;</td><td>439 &euro;</td><td>619 &euro;</td><td>659 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>409 &euro;</td><td>539 &euro;</td><td>719 &euro;</td><td>759 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">509 &euro;</span></td><td class="highlight"><span class="highlight">649 &euro;</span></td><td class="highlight"><span class="highlight">959 &euro;</span></td><td class="highlight"><span class="highlight">999 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">579 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td><td class="highlight"><span class="highlight">1019 &euro;</span></td><td class="highlight"><span class="highlight">1059 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>679 &euro;</td><td>819 &euro;</td><td>1249 &euro;</td><td>1289 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>789 &euro;</td><td>919 &euro;</td><td>1309 &euro;</td><td>1349 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>889 &euro;</td><td>1029 &euro;</td><td>1439 &euro;</td><td>1479 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>989 &euro;</td><td>1129 &euro;</td><td>1639 &euro;</td><td>1679 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>1089 &euro;</td><td>1229 &euro;</td><td>1759 &euro;</td><td>1799 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1239 &euro;</td><td>1379 &euro;</td><td>1909 &euro;</td><td>1949 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-content " id="tab-bulk">
-            <div class="quality-selector">
-                <button class="quality-btn active" onclick="showQuality('bulk', 'Single-Drawn')">Single Drawn</button>
-                <button class="quality-btn " onclick="showQuality('bulk', 'Double-Drawn')">Double Drawn</button>
-                <button class="quality-btn " onclick="showQuality('bulk', 'Super-Double-Drawn')">Super Double Drawn</button>
-            </div>
-            <div class="quality-content" id="quality-bulk-Single-Drawn" style="display: block;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>80 &euro;</td><td>199 &euro;</td><td>249 &euro;</td><td>289 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>99 &euro;</td><td>239 &euro;</td><td>289 &euro;</td><td>329 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>129 &euro;</td><td>259 &euro;</td><td>329 &euro;</td><td>369 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>145 &euro;</td><td>279 &euro;</td><td>369 &euro;</td><td>409 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>179 &euro;</td><td>319 &euro;</td><td>409 &euro;</td><td>449 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">249 &euro;</span></td><td class="highlight"><span class="highlight">389 &euro;</span></td><td class="highlight"><span class="highlight">509 &euro;</span></td><td class="highlight"><span class="highlight">549 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">349 &euro;</span></td><td class="highlight"><span class="highlight">489 &euro;</span></td><td class="highlight"><span class="highlight">649 &euro;</span></td><td class="highlight"><span class="highlight">689 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>399 &euro;</td><td>539 &euro;</td><td>709 &euro;</td><td>749 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>479 &euro;</td><td>619 &euro;</td><td>839 &euro;</td><td>879 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>579 &euro;</td><td>749 &euro;</td><td>899 &euro;</td><td>939 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>679 &euro;</td><td>809 &euro;</td><td>1029 &euro;</td><td>1069 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>749 &euro;</td><td>889 &euro;</td><td>1129 &euro;</td><td>1169 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>869 &euro;</td><td>1000 &euro;</td><td>1249 &euro;</td><td>1289 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-bulk-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>99 &euro;</td><td>219 &euro;</td><td>299 &euro;</td><td>339 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>119 &euro;</td><td>249 &euro;</td><td>339 &euro;</td><td>379 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>139 &euro;</td><td>289 &euro;</td><td>379 &euro;</td><td>419 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>179 &euro;</td><td>319 &euro;</td><td>419 &euro;</td><td>459 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>209 &euro;</td><td>339 &euro;</td><td>509 &euro;</td><td>549 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">309 &euro;</span></td><td class="highlight"><span class="highlight">429 &euro;</span></td><td class="highlight"><span class="highlight">609 &euro;</span></td><td class="highlight"><span class="highlight">649 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">429 &euro;</span></td><td class="highlight"><span class="highlight">559 &euro;</span></td><td class="highlight"><span class="highlight">799 &euro;</span></td><td class="highlight"><span class="highlight">839 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>489 &euro;</td><td>609 &euro;</td><td>859 &euro;</td><td>899 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>609 &euro;</td><td>719 &euro;</td><td>1039 &euro;</td><td>1079 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>699 &euro;</td><td>789 &euro;</td><td>1099 &euro;</td><td>1139 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>799 &euro;</td><td>899 &euro;</td><td>1229 &euro;</td><td>1269 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>889 &euro;</td><td>989 &euro;</td><td>1379 &euro;</td><td>1419 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>959 &euro;</td><td>1089 &euro;</td><td>1499 &euro;</td><td>1539 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-bulk-Super-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>110 &euro;</td><td>229 &euro;</td><td>349 &euro;</td><td>389 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>139 &euro;</td><td>269 &euro;</td><td>389 &euro;</td><td>429 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>169 &euro;</td><td>299 &euro;</td><td>429 &euro;</td><td>469 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>209 &euro;</td><td>339 &euro;</td><td>469 &euro;</td><td>509 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>299 &euro;</td><td>429 &euro;</td><td>609 &euro;</td><td>649 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">399 &euro;</span></td><td class="highlight"><span class="highlight">529 &euro;</span></td><td class="highlight"><span class="highlight">709 &euro;</span></td><td class="highlight"><span class="highlight">749 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">639 &euro;</span></td><td class="highlight"><span class="highlight">949 &euro;</span></td><td class="highlight"><span class="highlight">989 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>569 &euro;</td><td>709 &euro;</td><td>1009 &euro;</td><td>1049 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>669 &euro;</td><td>809 &euro;</td><td>1239 &euro;</td><td>1279 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>779 &euro;</td><td>909 &euro;</td><td>1299 &euro;</td><td>1339 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>879 &euro;</td><td>1019 &euro;</td><td>1429 &euro;</td><td>1469 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>979 &euro;</td><td>1119 &euro;</td><td>1629 &euro;</td><td>1669 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1079 &euro;</td><td>1219 &euro;</td><td>1749 &euro;</td><td>1789 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-content " id="tab-clip">
-            <div class="quality-selector">
-                <button class="quality-btn active" onclick="showQuality('clip', 'Single-Drawn')">Single Drawn</button>
-                <button class="quality-btn " onclick="showQuality('clip', 'Double-Drawn')">Double Drawn</button>
-                <button class="quality-btn " onclick="showQuality('clip', 'Super-Double-Drawn')">Super Double Drawn</button>
-            </div>
-            <div class="quality-content" id="quality-clip-Single-Drawn" style="display: block;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>169 &euro;</td><td>309 &euro;</td><td>359 &euro;</td><td>399 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>199 &euro;</td><td>329 &euro;</td><td>399 &euro;</td><td>439 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>215 &euro;</td><td>349 &euro;</td><td>439 &euro;</td><td>479 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>249 &euro;</td><td>389 &euro;</td><td>479 &euro;</td><td>519 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>319 &euro;</td><td>459 &euro;</td><td>579 &euro;</td><td>619 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">419 &euro;</span></td><td class="highlight"><span class="highlight">559 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td><td class="highlight"><span class="highlight">759 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">469 &euro;</span></td><td class="highlight"><span class="highlight">609 &euro;</span></td><td class="highlight"><span class="highlight">779 &euro;</span></td><td class="highlight"><span class="highlight">819 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>549 &euro;</td><td>689 &euro;</td><td>909 &euro;</td><td>949 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>649 &euro;</td><td>819 &euro;</td><td>969 &euro;</td><td>1009 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>749 &euro;</td><td>879 &euro;</td><td>1099 &euro;</td><td>1139 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>819 &euro;</td><td>959 &euro;</td><td>1199 &euro;</td><td>1239 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>939 &euro;</td><td>1070 &euro;</td><td>1319 &euro;</td><td>1359 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1089 &euro;</td><td>1220 &euro;</td><td>1469 &euro;</td><td>1509 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-clip-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>189 &euro;</td><td>319 &euro;</td><td>409 &euro;</td><td>449 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>209 &euro;</td><td>359 &euro;</td><td>449 &euro;</td><td>489 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>249 &euro;</td><td>389 &euro;</td><td>489 &euro;</td><td>529 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>279 &euro;</td><td>409 &euro;</td><td>579 &euro;</td><td>619 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>379 &euro;</td><td>499 &euro;</td><td>679 &euro;</td><td>719 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">629 &euro;</span></td><td class="highlight"><span class="highlight">869 &euro;</span></td><td class="highlight"><span class="highlight">909 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">559 &euro;</span></td><td class="highlight"><span class="highlight">679 &euro;</span></td><td class="highlight"><span class="highlight">929 &euro;</span></td><td class="highlight"><span class="highlight">969 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>679 &euro;</td><td>789 &euro;</td><td>1109 &euro;</td><td>1149 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>769 &euro;</td><td>859 &euro;</td><td>1169 &euro;</td><td>1209 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>869 &euro;</td><td>969 &euro;</td><td>1299 &euro;</td><td>1339 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>959 &euro;</td><td>1059 &euro;</td><td>1449 &euro;</td><td>1489 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>1029 &euro;</td><td>1159 &euro;</td><td>1569 &euro;</td><td>1609 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1179 &euro;</td><td>1309 &euro;</td><td>1719 &euro;</td><td>1759 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-            <div class="quality-content" id="quality-clip-Super-Double-Drawn" style="display: none;">
-                <div class="price-table-wrap">
-                    <table class="price-table">
-            <thead>
-                <tr>
-                    <th>Länge</th>
-                    <th>Naturfarbe<br><small>#1, #1b</small></th>
-                    <th>Dunkle Farben<br><small>#2–#30</small></th>
-                    <th>Helle Farben<br><small>#10–#20</small></th>
-                    <th>Blond<br><small>#22–#120</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20 cm (8")</td><td>209 &euro;</td><td>339 &euro;</td><td>459 &euro;</td><td>499 &euro;</td></tr>
-                <tr><td>25 cm (10")</td><td>239 &euro;</td><td>369 &euro;</td><td>499 &euro;</td><td>539 &euro;</td></tr>
-                <tr><td>30 cm (12")</td><td>279 &euro;</td><td>409 &euro;</td><td>539 &euro;</td><td>579 &euro;</td></tr>
-                <tr><td>35 cm (14")</td><td>369 &euro;</td><td>499 &euro;</td><td>679 &euro;</td><td>719 &euro;</td></tr>
-                <tr><td>40 cm (16")</td><td>469 &euro;</td><td>599 &euro;</td><td>779 &euro;</td><td>819 &euro;</td></tr>
-                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">569 &euro;</span></td><td class="highlight"><span class="highlight">709 &euro;</span></td><td class="highlight"><span class="highlight">1019 &euro;</span></td><td class="highlight"><span class="highlight">1059 &euro;</span></td></tr>
-                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">639 &euro;</span></td><td class="highlight"><span class="highlight">779 &euro;</span></td><td class="highlight"><span class="highlight">1079 &euro;</span></td><td class="highlight"><span class="highlight">1119 &euro;</span></td></tr>
-                <tr><td>55 cm (22")</td><td>739 &euro;</td><td>879 &euro;</td><td>1309 &euro;</td><td>1349 &euro;</td></tr>
-                <tr><td>60 cm (24")</td><td>849 &euro;</td><td>979 &euro;</td><td>1369 &euro;</td><td>1409 &euro;</td></tr>
-                <tr><td>65 cm (26")</td><td>949 &euro;</td><td>1089 &euro;</td><td>1499 &euro;</td><td>1539 &euro;</td></tr>
-                <tr><td>70 cm (28")</td><td>1049 &euro;</td><td>1189 &euro;</td><td>1699 &euro;</td><td>1739 &euro;</td></tr>
-                <tr><td>75 cm (30")</td><td>1149 &euro;</td><td>1289 &euro;</td><td>1819 &euro;</td><td>1859 &euro;</td></tr>
-                <tr><td>80 cm (32")</td><td>1299 &euro;</td><td>1439 &euro;</td><td>1969 &euro;</td><td>2009 &euro;</td></tr>
-            </tbody>
-        </table>
-                </div>
-            </div>
-        </div>
 
         <div class="price-note">
-            <strong>Hinweis zu den Preisen:</strong><br>
-            Alle Preise in EUR/kg (1 kg ≈ 10 Stück), exkl. Versand.<br>
-            <strong>Aufpreise:</strong> Piano/Balayage/Ombré +10&euro;/kg • Locken & Wellen +20&euro;/kg • Bone Straight +30&euro;/kg
+            <strong>Hinweise zu den Preisen:</strong><br>
+            Alle Preise sind Großhandelspreise in Euro pro Kilogramm (1 kg &asymp; 10 Stück), exkl. Versand. Wechselkurs: 1 USD = 0,92 EUR.<br><br>
+            <strong>Aufpreise (Spezialbehandlungen):</strong> Piano / Balayage / Ombré: +10 &euro;/kg &bull; Locken & Wellen: +20 &euro;/kg &bull; Bone Straight: +30 &euro;/kg<br><br>
+            <strong>Hinweis:</strong> Die Preise für Keratin, Tape-In, Tressen und Clip & Ponytail werden aktuell mit der Fabrik abgestimmt. Für ein verbindliches Angebot kontaktieren Sie uns direkt.
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- QUALITY -->
 <section id="qualitaet">
@@ -1356,7 +2470,7 @@
                     <div class="contact-icon">&#128247;</div>
                     <div>
                         <strong>Instagram</strong>
-                        <span><a href="https://www.instagram.com/diamond_vnexhair/" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: none;">@diamond_vnexhair</a></span>
+                        <span><a href="https://www.instagram.com/vnexhair.daria/" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: none;">@diamond_vnexhair</a></span>
                     </div>
                 </div>
                 <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 8px;">
@@ -1396,7 +2510,7 @@
                             <option value="keratin">Keratin-Bondings</option>
                             <option value="tape">Tape-In Extensions</option>
                             <option value="weft">Tressen (Weft)</option>
-                            <option value="clip">Clip & Ponytail</option>
+                            <option value="genius">Clip & Ponytail</option>
                             <option value="bulk">Rohhaar (Bulk)</option>
                             <option value="all">Gesamtes Sortiment</option>
                         </select>
@@ -1444,32 +2558,27 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-
-// Quality selector for price tables
+// Quality Selector
 function showQuality(product, quality) {
-    const qid = quality.replace(/ /g, '-');
-    const contentDivs = document.querySelectorAll(`[id^="quality-${product}-"]`);
-    contentDivs.forEach(div => div.style.display = 'none');
-    const target = document.getElementById(`quality-${product}-${qid}`);
-    if (target) target.style.display = 'block';
+    // Hide all quality divs for this product
+    const divs = document.querySelectorAll(`div[id^="quality-${product}-"]`);
+    divs.forEach(div => div.style.display = 'none');
 
-    const tab = document.getElementById('tab-' + product);
-    if (tab) {
-        tab.querySelectorAll('.quality-btn').forEach(btn => btn.classList.remove('active'));
-    }
-    if (event && event.target) event.target.classList.add('active');
+    // Show the selected one
+    document.getElementById(`quality-${product}-${quality}`).style.display = 'table';
+
+    // Update button active states
+    const buttons = document.querySelectorAll(`#tab-${product} .quality-btn`);
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
 }
 
-
-function showTab(name) {
+// Preis-Tabs
+function showTab(name) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active'));
     document.getElementById('tab-' + name).classList.add('active');
     event.target.classList.add('active');
-    // Reset quality to Single Drawn when switching product tab
-    showQuality(name, 'Single-Drawn');
-    const qBtns = document.querySelectorAll('#tab-' + name + ' .quality-btn');
-    qBtns.forEach((b, i) => { b.classList.toggle('active', i === 0); });
 }
 
 // Formular (Platzhalter)
