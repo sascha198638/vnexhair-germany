@@ -268,6 +268,36 @@
             text-align: center;
         }
         .price-table tr:hover td { background: rgba(201,168,76,0.03); }
+        .quality-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .quality-btn {
+            padding: 0.6rem 1.2rem;
+            background: rgba(201,168,76,0.08);
+            border: 1px solid rgba(201,168,76,0.2);
+            color: var(--text);
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .quality-btn:hover {
+            background: rgba(201,168,76,0.15);
+            border-color: rgba(201,168,76,0.4);
+        }
+        .quality-btn.active {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+        .quality-content {
+            display: none;
+        }
+        
         .price-table .highlight { color: var(--gold); font-weight: 600; }
         .price-note {
             margin-top: 1.5rem; font-size: 0.8rem; color: var(--gray);
@@ -579,12 +609,12 @@
             </div>
             <div class="product-card fade-in">
                 <div class="product-icon">&#10023;</div>
-                <h3>Genius-Tresse</h3>
-                <p>Ultra-dünne, unsichtbare Tresse – die Premium-Variante. Extrem flach, kein Rückhaar, perfekt für dünnes Eigenhaar und nahtlose Übergänge.</p>
-                <div class="product-price-hint">ab ca. 69 &euro;/kg (Single Drawn)</div>
+                <h3>Clip & Ponytail</h3>
+                <p>Clip-In und Ponytail Extensions für schnelle, flexible Anwendungen. Perfekt für Ereignisse und für Kunden, die zeitlich flexibel sind. Hohe Qualität, einfache Bedienung.</p>
+                <div class="product-price-hint">ab ca. 169 &euro;/kg (Single Drawn)</div>
                 <div class="product-meta">
-                    <span class="product-tag">Ultra-dünn</span>
-                    <span class="product-tag">Kein Rückhaar</span>
+                    <span class="product-tag">Clip-In System</span>
+                    <span class="product-tag">Ponytail Extensions</span>
                     <span class="product-tag">8–32 Zoll</span>
                 </div>
             </div>
@@ -611,175 +641,510 @@
         <div class="divider"></div>
         <div class="section-subtitle">Alle Preise in Euro pro Kilogramm. Preise variieren je nach Produkttyp, Qualität und Farbe.</div>
 
-        <div class="price-tabs">
+                <div class="price-tabs">
             <div class="price-tab active" onclick="showTab('keratin')">Keratin-Bondings</div>
-            <div class="price-tab" onclick="showTab('tape')">Tape-In</div>
-            <div class="price-tab" onclick="showTab('weft')">Tressen</div>
-            <div class="price-tab" onclick="showTab('genius')">Genius-Tresse</div>
-            <div class="price-tab" onclick="showTab('bulk')">Rohhaar</div>
+            <div class="price-tab " onclick="showTab('tape')">Tape-In</div>
+            <div class="price-tab " onclick="showTab('weft')">Tressen</div>
+            <div class="price-tab " onclick="showTab('bulk')">Rohhaar</div>
+            <div class="price-tab " onclick="showTab('clip')">Clip & Ponytail</div>
         </div>
 
-        <!-- KERATIN -->
         <div class="tab-content active" id="tab-keratin">
-            <div class="price-table-wrap fade-in">
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th>Länge</th>
-                            <th>Single Drawn</th>
-                            <th>Double Drawn</th>
-                            <th>Super Double Drawn</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>20 cm (8")</td><td>55 &euro;</td><td>78 &euro;</td><td>119 &euro;</td></tr>
-                        <tr><td>25 cm (10")</td><td>58 &euro;</td><td>83 &euro;</td><td>124 &euro;</td></tr>
-                        <tr><td>30 cm (12")</td><td>62 &euro;</td><td>87 &euro;</td><td>128 &euro;</td></tr>
-                        <tr><td>35 cm (14")</td><td>68 &euro;</td><td>92 &euro;</td><td>133 &euro;</td></tr>
-                        <tr><td>40 cm (16")</td><td>73 &euro;</td><td>97 &euro;</td><td>138 &euro;</td></tr>
-                        <tr><td class="highlight">45 cm (18")</td><td class="highlight">83 &euro;</td><td class="highlight">110 &euro;</td><td class="highlight">147 &euro;</td></tr>
-                        <tr><td class="highlight">50 cm (20")</td><td class="highlight">92 &euro;</td><td class="highlight">124 &euro;</td><td class="highlight">161 &euro;</td></tr>
-                        <tr><td>55 cm (22")</td><td>101 &euro;</td><td>138 &euro;</td><td>175 &euro;</td></tr>
-                        <tr><td>60 cm (24")</td><td>119 &euro;</td><td>161 &euro;</td><td>193 &euro;</td></tr>
-                        <tr><td>65 cm (26")</td><td>138 &euro;</td><td>184 &euro;</td><td>225 &euro;</td></tr>
-                        <tr><td>70 cm (28")</td><td>156 &euro;</td><td>207 &euro;</td><td>253 &euro;</td></tr>
-                        <tr><td>75 cm (30")</td><td>193 &euro;</td><td>253 &euro;</td><td>299 &euro;</td></tr>
-                        <tr><td>80 cm (32")</td><td>230 &euro;</td><td>299 &euro;</td><td>368 &euro;</td></tr>
-                    </tbody>
-                </table>
+            <div class="quality-selector">
+                <button class="quality-btn active" onclick="showQuality('keratin', 'Single Drawn')">Single Drawn</button>
+                <button class="quality-btn " onclick="showQuality('keratin', 'Double Drawn')">Double Drawn</button>
+                <button class="quality-btn " onclick="showQuality('keratin', 'Super Double Drawn')">Super Double Drawn</button>
+            </div>
+            <div class="quality-content" id="quality-keratin-Single Drawn" style="display: block;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>150 &euro;</td><td>269 &euro;</td><td>319 &euro;</td><td>359 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>169 &euro;</td><td>309 &euro;</td><td>359 &euro;</td><td>399 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>199 &euro;</td><td>329 &euro;</td><td>399 &euro;</td><td>439 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>215 &euro;</td><td>349 &euro;</td><td>439 &euro;</td><td>479 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>249 &euro;</td><td>389 &euro;</td><td>479 &euro;</td><td>519 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">319 &euro;</span></td><td class="highlight"><span class="highlight">459 &euro;</span></td><td class="highlight"><span class="highlight">579 &euro;</span></td><td class="highlight"><span class="highlight">619 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">419 &euro;</span></td><td class="highlight"><span class="highlight">559 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td><td class="highlight"><span class="highlight">759 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>469 &euro;</td><td>609 &euro;</td><td>779 &euro;</td><td>819 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>549 &euro;</td><td>689 &euro;</td><td>909 &euro;</td><td>949 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>649 &euro;</td><td>819 &euro;</td><td>969 &euro;</td><td>1009 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>749 &euro;</td><td>879 &euro;</td><td>1099 &euro;</td><td>1139 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>819 &euro;</td><td>959 &euro;</td><td>1199 &euro;</td><td>1239 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>939 &euro;</td><td>1070 &euro;</td><td>1319 &euro;</td><td>1359 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-keratin-Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>169 &euro;</td><td>289 &euro;</td><td>369 &euro;</td><td>409 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>189 &euro;</td><td>319 &euro;</td><td>409 &euro;</td><td>449 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>209 &euro;</td><td>359 &euro;</td><td>449 &euro;</td><td>489 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>249 &euro;</td><td>389 &euro;</td><td>489 &euro;</td><td>529 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>279 &euro;</td><td>409 &euro;</td><td>579 &euro;</td><td>619 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">379 &euro;</span></td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">679 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">629 &euro;</span></td><td class="highlight"><span class="highlight">869 &euro;</span></td><td class="highlight"><span class="highlight">909 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>559 &euro;</td><td>679 &euro;</td><td>929 &euro;</td><td>969 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>679 &euro;</td><td>789 &euro;</td><td>1109 &euro;</td><td>1149 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>769 &euro;</td><td>859 &euro;</td><td>1169 &euro;</td><td>1209 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>869 &euro;</td><td>969 &euro;</td><td>1299 &euro;</td><td>1339 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>959 &euro;</td><td>1059 &euro;</td><td>1449 &euro;</td><td>1489 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1029 &euro;</td><td>1159 &euro;</td><td>1569 &euro;</td><td>1609 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-keratin-Super Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>180 &euro;</td><td>299 &euro;</td><td>419 &euro;</td><td>459 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>209 &euro;</td><td>339 &euro;</td><td>459 &euro;</td><td>499 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>239 &euro;</td><td>369 &euro;</td><td>499 &euro;</td><td>539 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>279 &euro;</td><td>409 &euro;</td><td>539 &euro;</td><td>579 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>369 &euro;</td><td>499 &euro;</td><td>679 &euro;</td><td>719 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">469 &euro;</span></td><td class="highlight"><span class="highlight">599 &euro;</span></td><td class="highlight"><span class="highlight">779 &euro;</span></td><td class="highlight"><span class="highlight">819 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">569 &euro;</span></td><td class="highlight"><span class="highlight">709 &euro;</span></td><td class="highlight"><span class="highlight">1019 &euro;</span></td><td class="highlight"><span class="highlight">1059 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>639 &euro;</td><td>779 &euro;</td><td>1079 &euro;</td><td>1119 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>739 &euro;</td><td>879 &euro;</td><td>1309 &euro;</td><td>1349 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>849 &euro;</td><td>979 &euro;</td><td>1369 &euro;</td><td>1409 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>949 &euro;</td><td>1089 &euro;</td><td>1499 &euro;</td><td>1539 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>1049 &euro;</td><td>1189 &euro;</td><td>1699 &euro;</td><td>1739 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1149 &euro;</td><td>1289 &euro;</td><td>1819 &euro;</td><td>1859 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
             </div>
         </div>
 
-        <!-- TAPE -->
-        <div class="tab-content" id="tab-tape">
-            <div class="price-table-wrap fade-in">
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th>Länge</th>
-                            <th>Single Drawn</th>
-                            <th>Double Drawn</th>
-                            <th>Super Double Drawn</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>20 cm (8")</td><td>55 &euro;</td><td>83 &euro;</td><td>124 &euro;</td></tr>
-                        <tr><td>25 cm (10")</td><td>58 &euro;</td><td>87 &euro;</td><td>128 &euro;</td></tr>
-                        <tr><td>30 cm (12")</td><td>62 &euro;</td><td>92 &euro;</td><td>133 &euro;</td></tr>
-                        <tr><td>35 cm (14")</td><td>68 &euro;</td><td>97 &euro;</td><td>138 &euro;</td></tr>
-                        <tr><td>40 cm (16")</td><td>73 &euro;</td><td>101 &euro;</td><td>142 &euro;</td></tr>
-                        <tr><td class="highlight">45 cm (18")</td><td class="highlight">83 &euro;</td><td class="highlight">115 &euro;</td><td class="highlight">152 &euro;</td></tr>
-                        <tr><td class="highlight">50 cm (20")</td><td class="highlight">92 &euro;</td><td class="highlight">128 &euro;</td><td class="highlight">165 &euro;</td></tr>
-                        <tr><td>55 cm (22")</td><td>101 &euro;</td><td>142 &euro;</td><td>179 &euro;</td></tr>
-                        <tr><td>60 cm (24")</td><td>119 &euro;</td><td>170 &euro;</td><td>202 &euro;</td></tr>
-                        <tr><td>65 cm (26")</td><td>138 &euro;</td><td>193 &euro;</td><td>230 &euro;</td></tr>
-                        <tr><td>70 cm (28")</td><td>156 &euro;</td><td>216 &euro;</td><td>267 &euro;</td></tr>
-                        <tr><td>75 cm (30")</td><td>193 &euro;</td><td>262 &euro;</td><td>322 &euro;</td></tr>
-                        <tr><td>80 cm (32")</td><td>230 &euro;</td><td>322 &euro;</td><td>391 &euro;</td></tr>
-                    </tbody>
-                </table>
+        <div class="tab-content " id="tab-tape">
+            <div class="quality-selector">
+                <button class="quality-btn active" onclick="showQuality('tape', 'Single Drawn')">Single Drawn</button>
+                <button class="quality-btn " onclick="showQuality('tape', 'Double Drawn')">Double Drawn</button>
+                <button class="quality-btn " onclick="showQuality('tape', 'Super Double Drawn')">Super Double Drawn</button>
+            </div>
+            <div class="quality-content" id="quality-tape-Single Drawn" style="display: block;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>180 &euro;</td><td>299 &euro;</td><td>349 &euro;</td><td>389 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>199 &euro;</td><td>339 &euro;</td><td>389 &euro;</td><td>429 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>229 &euro;</td><td>359 &euro;</td><td>429 &euro;</td><td>469 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>245 &euro;</td><td>379 &euro;</td><td>469 &euro;</td><td>509 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>279 &euro;</td><td>419 &euro;</td><td>509 &euro;</td><td>549 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">349 &euro;</span></td><td class="highlight"><span class="highlight">489 &euro;</span></td><td class="highlight"><span class="highlight">609 &euro;</span></td><td class="highlight"><span class="highlight">649 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">449 &euro;</span></td><td class="highlight"><span class="highlight">589 &euro;</span></td><td class="highlight"><span class="highlight">749 &euro;</span></td><td class="highlight"><span class="highlight">789 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>499 &euro;</td><td>639 &euro;</td><td>809 &euro;</td><td>849 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>579 &euro;</td><td>719 &euro;</td><td>939 &euro;</td><td>979 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>679 &euro;</td><td>849 &euro;</td><td>999 &euro;</td><td>1039 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>779 &euro;</td><td>909 &euro;</td><td>1129 &euro;</td><td>1169 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>849 &euro;</td><td>989 &euro;</td><td>1229 &euro;</td><td>1269 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>969 &euro;</td><td>1100 &euro;</td><td>1349 &euro;</td><td>1389 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-tape-Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>199 &euro;</td><td>319 &euro;</td><td>399 &euro;</td><td>439 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>219 &euro;</td><td>349 &euro;</td><td>439 &euro;</td><td>479 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>239 &euro;</td><td>389 &euro;</td><td>479 &euro;</td><td>519 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>279 &euro;</td><td>419 &euro;</td><td>519 &euro;</td><td>559 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>309 &euro;</td><td>439 &euro;</td><td>609 &euro;</td><td>649 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">409 &euro;</span></td><td class="highlight"><span class="highlight">529 &euro;</span></td><td class="highlight"><span class="highlight">709 &euro;</span></td><td class="highlight"><span class="highlight">749 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">529 &euro;</span></td><td class="highlight"><span class="highlight">659 &euro;</span></td><td class="highlight"><span class="highlight">899 &euro;</span></td><td class="highlight"><span class="highlight">939 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>589 &euro;</td><td>709 &euro;</td><td>959 &euro;</td><td>999 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>709 &euro;</td><td>819 &euro;</td><td>1139 &euro;</td><td>1179 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>799 &euro;</td><td>889 &euro;</td><td>1199 &euro;</td><td>1239 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>899 &euro;</td><td>999 &euro;</td><td>1329 &euro;</td><td>1369 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>989 &euro;</td><td>1089 &euro;</td><td>1479 &euro;</td><td>1519 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1059 &euro;</td><td>1189 &euro;</td><td>1599 &euro;</td><td>1639 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-tape-Super Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>210 &euro;</td><td>329 &euro;</td><td>449 &euro;</td><td>489 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>239 &euro;</td><td>369 &euro;</td><td>489 &euro;</td><td>529 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>269 &euro;</td><td>399 &euro;</td><td>529 &euro;</td><td>569 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>309 &euro;</td><td>439 &euro;</td><td>569 &euro;</td><td>609 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>399 &euro;</td><td>529 &euro;</td><td>709 &euro;</td><td>749 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">629 &euro;</span></td><td class="highlight"><span class="highlight">809 &euro;</span></td><td class="highlight"><span class="highlight">849 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">599 &euro;</span></td><td class="highlight"><span class="highlight">739 &euro;</span></td><td class="highlight"><span class="highlight">1049 &euro;</span></td><td class="highlight"><span class="highlight">1089 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>669 &euro;</td><td>809 &euro;</td><td>1109 &euro;</td><td>1149 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>769 &euro;</td><td>909 &euro;</td><td>1339 &euro;</td><td>1379 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>879 &euro;</td><td>1009 &euro;</td><td>1399 &euro;</td><td>1439 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>979 &euro;</td><td>1119 &euro;</td><td>1529 &euro;</td><td>1569 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>1079 &euro;</td><td>1219 &euro;</td><td>1729 &euro;</td><td>1769 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1179 &euro;</td><td>1319 &euro;</td><td>1849 &euro;</td><td>1889 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
             </div>
         </div>
 
-        <!-- WEFT -->
-        <div class="tab-content" id="tab-weft">
-            <div class="price-table-wrap fade-in">
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th>Länge</th>
-                            <th>Single Drawn</th>
-                            <th>Double Drawn</th>
-                            <th>Super Double Drawn</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>20 cm (8")</td><td>46 &euro;</td><td>69 &euro;</td><td>101 &euro;</td></tr>
-                        <tr><td>25 cm (10")</td><td>48 &euro;</td><td>73 &euro;</td><td>106 &euro;</td></tr>
-                        <tr><td>30 cm (12")</td><td>51 &euro;</td><td>76 &euro;</td><td>110 &euro;</td></tr>
-                        <tr><td>35 cm (14")</td><td>55 &euro;</td><td>80 &euro;</td><td>115 &euro;</td></tr>
-                        <tr><td>40 cm (16")</td><td>60 &euro;</td><td>85 &euro;</td><td>119 &euro;</td></tr>
-                        <tr><td class="highlight">45 cm (18")</td><td class="highlight">69 &euro;</td><td class="highlight">97 &euro;</td><td class="highlight">128 &euro;</td></tr>
-                        <tr><td class="highlight">50 cm (20")</td><td class="highlight">78 &euro;</td><td class="highlight">110 &euro;</td><td class="highlight">142 &euro;</td></tr>
-                        <tr><td>55 cm (22")</td><td>87 &euro;</td><td>124 &euro;</td><td>156 &euro;</td></tr>
-                        <tr><td>60 cm (24")</td><td>101 &euro;</td><td>147 &euro;</td><td>175 &euro;</td></tr>
-                        <tr><td>65 cm (26")</td><td>119 &euro;</td><td>165 &euro;</td><td>202 &euro;</td></tr>
-                        <tr><td>70 cm (28")</td><td>138 &euro;</td><td>184 &euro;</td><td>230 &euro;</td></tr>
-                        <tr><td>75 cm (30")</td><td>165 &euro;</td><td>225 &euro;</td><td>276 &euro;</td></tr>
-                        <tr><td>80 cm (32")</td><td>193 &euro;</td><td>276 &euro;</td><td>345 &euro;</td></tr>
-                    </tbody>
-                </table>
+        <div class="tab-content " id="tab-weft">
+            <div class="quality-selector">
+                <button class="quality-btn active" onclick="showQuality('weft', 'Single Drawn')">Single Drawn</button>
+                <button class="quality-btn " onclick="showQuality('weft', 'Double Drawn')">Double Drawn</button>
+                <button class="quality-btn " onclick="showQuality('weft', 'Super Double Drawn')">Super Double Drawn</button>
+            </div>
+            <div class="quality-content" id="quality-weft-Single Drawn" style="display: block;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>109 &euro;</td><td>249 &euro;</td><td>299 &euro;</td><td>339 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>139 &euro;</td><td>269 &euro;</td><td>339 &euro;</td><td>379 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>155 &euro;</td><td>289 &euro;</td><td>379 &euro;</td><td>419 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>189 &euro;</td><td>329 &euro;</td><td>419 &euro;</td><td>459 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>259 &euro;</td><td>399 &euro;</td><td>519 &euro;</td><td>559 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">359 &euro;</span></td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">659 &euro;</span></td><td class="highlight"><span class="highlight">699 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">409 &euro;</span></td><td class="highlight"><span class="highlight">549 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td><td class="highlight"><span class="highlight">759 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>489 &euro;</td><td>629 &euro;</td><td>849 &euro;</td><td>889 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>589 &euro;</td><td>759 &euro;</td><td>909 &euro;</td><td>949 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>689 &euro;</td><td>819 &euro;</td><td>1039 &euro;</td><td>1079 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>759 &euro;</td><td>899 &euro;</td><td>1139 &euro;</td><td>1179 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>879 &euro;</td><td>1010 &euro;</td><td>1259 &euro;</td><td>1299 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1029 &euro;</td><td>1160 &euro;</td><td>1409 &euro;</td><td>1449 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-weft-Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>129 &euro;</td><td>259 &euro;</td><td>349 &euro;</td><td>389 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>149 &euro;</td><td>299 &euro;</td><td>389 &euro;</td><td>429 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>189 &euro;</td><td>329 &euro;</td><td>429 &euro;</td><td>469 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>219 &euro;</td><td>349 &euro;</td><td>519 &euro;</td><td>559 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>319 &euro;</td><td>439 &euro;</td><td>619 &euro;</td><td>659 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">439 &euro;</span></td><td class="highlight"><span class="highlight">569 &euro;</span></td><td class="highlight"><span class="highlight">809 &euro;</span></td><td class="highlight"><span class="highlight">849 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">619 &euro;</span></td><td class="highlight"><span class="highlight">869 &euro;</span></td><td class="highlight"><span class="highlight">909 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>619 &euro;</td><td>729 &euro;</td><td>1049 &euro;</td><td>1089 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>709 &euro;</td><td>799 &euro;</td><td>1109 &euro;</td><td>1149 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>809 &euro;</td><td>909 &euro;</td><td>1239 &euro;</td><td>1279 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>899 &euro;</td><td>999 &euro;</td><td>1389 &euro;</td><td>1429 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>969 &euro;</td><td>1099 &euro;</td><td>1509 &euro;</td><td>1549 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1119 &euro;</td><td>1249 &euro;</td><td>1659 &euro;</td><td>1699 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-weft-Super Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>149 &euro;</td><td>279 &euro;</td><td>399 &euro;</td><td>439 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>179 &euro;</td><td>309 &euro;</td><td>439 &euro;</td><td>479 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>219 &euro;</td><td>349 &euro;</td><td>479 &euro;</td><td>519 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>309 &euro;</td><td>439 &euro;</td><td>619 &euro;</td><td>659 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>409 &euro;</td><td>539 &euro;</td><td>719 &euro;</td><td>759 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">509 &euro;</span></td><td class="highlight"><span class="highlight">649 &euro;</span></td><td class="highlight"><span class="highlight">959 &euro;</span></td><td class="highlight"><span class="highlight">999 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">579 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td><td class="highlight"><span class="highlight">1019 &euro;</span></td><td class="highlight"><span class="highlight">1059 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>679 &euro;</td><td>819 &euro;</td><td>1249 &euro;</td><td>1289 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>789 &euro;</td><td>919 &euro;</td><td>1309 &euro;</td><td>1349 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>889 &euro;</td><td>1029 &euro;</td><td>1439 &euro;</td><td>1479 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>989 &euro;</td><td>1129 &euro;</td><td>1639 &euro;</td><td>1679 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>1089 &euro;</td><td>1229 &euro;</td><td>1759 &euro;</td><td>1799 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1239 &euro;</td><td>1379 &euro;</td><td>1909 &euro;</td><td>1949 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
             </div>
         </div>
 
-        <!-- GENIUS -->
-        <div class="tab-content" id="tab-genius">
-            <div class="price-table-wrap fade-in">
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th>Länge</th>
-                            <th>Single Drawn</th>
-                            <th>Double Drawn</th>
-                            <th>Super Double Drawn</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>20 cm (8")</td><td>69 &euro;</td><td>92 &euro;</td><td>133 &euro;</td></tr>
-                        <tr><td>25 cm (10")</td><td>71 &euro;</td><td>97 &euro;</td><td>138 &euro;</td></tr>
-                        <tr><td>30 cm (12")</td><td>74 &euro;</td><td>101 &euro;</td><td>142 &euro;</td></tr>
-                        <tr><td>35 cm (14")</td><td>78 &euro;</td><td>106 &euro;</td><td>147 &euro;</td></tr>
-                        <tr><td>40 cm (16")</td><td>83 &euro;</td><td>110 &euro;</td><td>152 &euro;</td></tr>
-                        <tr><td class="highlight">45 cm (18")</td><td class="highlight">92 &euro;</td><td class="highlight">124 &euro;</td><td class="highlight">161 &euro;</td></tr>
-                        <tr><td class="highlight">50 cm (20")</td><td class="highlight">101 &euro;</td><td class="highlight">138 &euro;</td><td class="highlight">175 &euro;</td></tr>
-                        <tr><td>55 cm (22")</td><td>110 &euro;</td><td>152 &euro;</td><td>193 &euro;</td></tr>
-                        <tr><td>60 cm (24")</td><td>128 &euro;</td><td>175 &euro;</td><td>216 &euro;</td></tr>
-                        <tr><td>65 cm (26")</td><td>147 &euro;</td><td>202 &euro;</td><td>253 &euro;</td></tr>
-                        <tr><td>70 cm (28")</td><td>165 &euro;</td><td>230 &euro;</td><td>290 &euro;</td></tr>
-                        <tr><td>75 cm (30")</td><td>193 &euro;</td><td>276 &euro;</td><td>345 &euro;</td></tr>
-                        <tr><td>80 cm (32")</td><td>230 &euro;</td><td>345 &euro;</td><td>414 &euro;</td></tr>
-                    </tbody>
-                </table>
+        <div class="tab-content " id="tab-bulk">
+            <div class="quality-selector">
+                <button class="quality-btn active" onclick="showQuality('bulk', 'Single Drawn')">Single Drawn</button>
+                <button class="quality-btn " onclick="showQuality('bulk', 'Double Drawn')">Double Drawn</button>
+                <button class="quality-btn " onclick="showQuality('bulk', 'Super Double Drawn')">Super Double Drawn</button>
+            </div>
+            <div class="quality-content" id="quality-bulk-Single Drawn" style="display: block;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>80 &euro;</td><td>199 &euro;</td><td>249 &euro;</td><td>289 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>99 &euro;</td><td>239 &euro;</td><td>289 &euro;</td><td>329 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>129 &euro;</td><td>259 &euro;</td><td>329 &euro;</td><td>369 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>145 &euro;</td><td>279 &euro;</td><td>369 &euro;</td><td>409 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>179 &euro;</td><td>319 &euro;</td><td>409 &euro;</td><td>449 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">249 &euro;</span></td><td class="highlight"><span class="highlight">389 &euro;</span></td><td class="highlight"><span class="highlight">509 &euro;</span></td><td class="highlight"><span class="highlight">549 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">349 &euro;</span></td><td class="highlight"><span class="highlight">489 &euro;</span></td><td class="highlight"><span class="highlight">649 &euro;</span></td><td class="highlight"><span class="highlight">689 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>399 &euro;</td><td>539 &euro;</td><td>709 &euro;</td><td>749 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>479 &euro;</td><td>619 &euro;</td><td>839 &euro;</td><td>879 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>579 &euro;</td><td>749 &euro;</td><td>899 &euro;</td><td>939 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>679 &euro;</td><td>809 &euro;</td><td>1029 &euro;</td><td>1069 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>749 &euro;</td><td>889 &euro;</td><td>1129 &euro;</td><td>1169 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>869 &euro;</td><td>1000 &euro;</td><td>1249 &euro;</td><td>1289 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-bulk-Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>99 &euro;</td><td>219 &euro;</td><td>299 &euro;</td><td>339 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>119 &euro;</td><td>249 &euro;</td><td>339 &euro;</td><td>379 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>139 &euro;</td><td>289 &euro;</td><td>379 &euro;</td><td>419 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>179 &euro;</td><td>319 &euro;</td><td>419 &euro;</td><td>459 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>209 &euro;</td><td>339 &euro;</td><td>509 &euro;</td><td>549 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">309 &euro;</span></td><td class="highlight"><span class="highlight">429 &euro;</span></td><td class="highlight"><span class="highlight">609 &euro;</span></td><td class="highlight"><span class="highlight">649 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">429 &euro;</span></td><td class="highlight"><span class="highlight">559 &euro;</span></td><td class="highlight"><span class="highlight">799 &euro;</span></td><td class="highlight"><span class="highlight">839 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>489 &euro;</td><td>609 &euro;</td><td>859 &euro;</td><td>899 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>609 &euro;</td><td>719 &euro;</td><td>1039 &euro;</td><td>1079 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>699 &euro;</td><td>789 &euro;</td><td>1099 &euro;</td><td>1139 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>799 &euro;</td><td>899 &euro;</td><td>1229 &euro;</td><td>1269 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>889 &euro;</td><td>989 &euro;</td><td>1379 &euro;</td><td>1419 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>959 &euro;</td><td>1089 &euro;</td><td>1499 &euro;</td><td>1539 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-bulk-Super Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>110 &euro;</td><td>229 &euro;</td><td>349 &euro;</td><td>389 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>139 &euro;</td><td>269 &euro;</td><td>389 &euro;</td><td>429 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>169 &euro;</td><td>299 &euro;</td><td>429 &euro;</td><td>469 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>209 &euro;</td><td>339 &euro;</td><td>469 &euro;</td><td>509 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>299 &euro;</td><td>429 &euro;</td><td>609 &euro;</td><td>649 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">399 &euro;</span></td><td class="highlight"><span class="highlight">529 &euro;</span></td><td class="highlight"><span class="highlight">709 &euro;</span></td><td class="highlight"><span class="highlight">749 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">639 &euro;</span></td><td class="highlight"><span class="highlight">949 &euro;</span></td><td class="highlight"><span class="highlight">989 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>569 &euro;</td><td>709 &euro;</td><td>1009 &euro;</td><td>1049 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>669 &euro;</td><td>809 &euro;</td><td>1239 &euro;</td><td>1279 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>779 &euro;</td><td>909 &euro;</td><td>1299 &euro;</td><td>1339 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>879 &euro;</td><td>1019 &euro;</td><td>1429 &euro;</td><td>1469 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>979 &euro;</td><td>1119 &euro;</td><td>1629 &euro;</td><td>1669 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1079 &euro;</td><td>1219 &euro;</td><td>1749 &euro;</td><td>1789 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
             </div>
         </div>
 
-        <!-- BULK (Natural Color #1, #1b — verified from factory price list) -->
-        <div class="tab-content" id="tab-bulk">
-            <div class="price-table-wrap fade-in">
-                <p style="color: var(--gold); font-size: 0.85rem; margin-bottom: 0.8rem;">Basispreise für Naturfarbe (#1, #1b) in EUR/kg &bull; 1 kg &asymp; 10 Stück &bull; Wechselkurs: 1 USD = 0,92 EUR</p>
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th>Länge</th>
-                            <th>Naturfarbe<br><small>#1, #1b</small></th>
-                            <th>Dunkle Farben<br><small>#2–#30</small></th>
-                            <th>Helle Farben<br><small>#10–#613</small></th>
-                            <th>Platinblond<br><small>#60, #120</small></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>20 cm (8")</td><td>53 &euro;</td><td>118 &euro;</td><td>229 &euro;</td><td>266 &euro;</td></tr>
-                        <tr><td>25 cm (10")</td><td>82 &euro;</td><td>143 &euro;</td><td>265 &euro;</td><td>302 &euro;</td></tr>
-                        <tr><td>30 cm (12")</td><td>109 &euro;</td><td>192 &euro;</td><td>311 &euro;</td><td>348 &euro;</td></tr>
-                        <tr><td>35 cm (14")</td><td>138 &euro;</td><td>216 &euro;</td><td>339 &euro;</td><td>376 &euro;</td></tr>
-                        <tr><td>40 cm (16")</td><td>155 &euro;</td><td>247 &euro;</td><td>366 &euro;</td><td>403 &euro;</td></tr>
-                        <tr><td class="highlight">45 cm (18")</td><td class="highlight">219 &euro;</td><td class="highlight">323 &euro;</td><td class="highlight">459 &euro;</td><td class="highlight">496 &euro;</td></tr>
-                        <tr><td class="highlight">50 cm (20")</td><td class="highlight">293 &euro;</td><td class="highlight">404 &euro;</td><td class="highlight">595 &euro;</td><td class="highlight">632 &euro;</td></tr>
-                    </tbody>
-                </table>
-                <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.6rem;">Preise für Single Drawn Qualität. Double Drawn und Super Double Drawn Preise auf Anfrage. Längere Längen (22"–32") ebenfalls verfügbar.</p>
+        <div class="tab-content " id="tab-clip">
+            <div class="quality-selector">
+                <button class="quality-btn active" onclick="showQuality('clip', 'Single Drawn')">Single Drawn</button>
+                <button class="quality-btn " onclick="showQuality('clip', 'Double Drawn')">Double Drawn</button>
+                <button class="quality-btn " onclick="showQuality('clip', 'Super Double Drawn')">Super Double Drawn</button>
+            </div>
+            <div class="quality-content" id="quality-clip-Single Drawn" style="display: block;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>169 &euro;</td><td>309 &euro;</td><td>359 &euro;</td><td>399 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>199 &euro;</td><td>329 &euro;</td><td>399 &euro;</td><td>439 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>215 &euro;</td><td>349 &euro;</td><td>439 &euro;</td><td>479 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>249 &euro;</td><td>389 &euro;</td><td>479 &euro;</td><td>519 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>319 &euro;</td><td>459 &euro;</td><td>579 &euro;</td><td>619 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">419 &euro;</span></td><td class="highlight"><span class="highlight">559 &euro;</span></td><td class="highlight"><span class="highlight">719 &euro;</span></td><td class="highlight"><span class="highlight">759 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">469 &euro;</span></td><td class="highlight"><span class="highlight">609 &euro;</span></td><td class="highlight"><span class="highlight">779 &euro;</span></td><td class="highlight"><span class="highlight">819 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>549 &euro;</td><td>689 &euro;</td><td>909 &euro;</td><td>949 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>649 &euro;</td><td>819 &euro;</td><td>969 &euro;</td><td>1009 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>749 &euro;</td><td>879 &euro;</td><td>1099 &euro;</td><td>1139 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>819 &euro;</td><td>959 &euro;</td><td>1199 &euro;</td><td>1239 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>939 &euro;</td><td>1070 &euro;</td><td>1319 &euro;</td><td>1359 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1089 &euro;</td><td>1220 &euro;</td><td>1469 &euro;</td><td>1509 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-clip-Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>189 &euro;</td><td>319 &euro;</td><td>409 &euro;</td><td>449 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>209 &euro;</td><td>359 &euro;</td><td>449 &euro;</td><td>489 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>249 &euro;</td><td>389 &euro;</td><td>489 &euro;</td><td>529 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>279 &euro;</td><td>409 &euro;</td><td>579 &euro;</td><td>619 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>379 &euro;</td><td>499 &euro;</td><td>679 &euro;</td><td>719 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">499 &euro;</span></td><td class="highlight"><span class="highlight">629 &euro;</span></td><td class="highlight"><span class="highlight">869 &euro;</span></td><td class="highlight"><span class="highlight">909 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">559 &euro;</span></td><td class="highlight"><span class="highlight">679 &euro;</span></td><td class="highlight"><span class="highlight">929 &euro;</span></td><td class="highlight"><span class="highlight">969 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>679 &euro;</td><td>789 &euro;</td><td>1109 &euro;</td><td>1149 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>769 &euro;</td><td>859 &euro;</td><td>1169 &euro;</td><td>1209 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>869 &euro;</td><td>969 &euro;</td><td>1299 &euro;</td><td>1339 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>959 &euro;</td><td>1059 &euro;</td><td>1449 &euro;</td><td>1489 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>1029 &euro;</td><td>1159 &euro;</td><td>1569 &euro;</td><td>1609 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1179 &euro;</td><td>1309 &euro;</td><td>1719 &euro;</td><td>1759 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+            <div class="quality-content" id="quality-clip-Super Double Drawn" style="display: none;">
+                <div class="price-table-wrap fade-in">
+                    <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Länge</th>
+                    <th>Naturfarbe<br><small>#1, #1b</small></th>
+                    <th>Dunkle Farben<br><small>#2–#30</small></th>
+                    <th>Helle Farben<br><small>#10–#20</small></th>
+                    <th>Blond<br><small>#22–#120</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20 cm (8")</td><td>209 &euro;</td><td>339 &euro;</td><td>459 &euro;</td><td>499 &euro;</td></tr>
+                <tr><td>25 cm (10")</td><td>239 &euro;</td><td>369 &euro;</td><td>499 &euro;</td><td>539 &euro;</td></tr>
+                <tr><td>30 cm (12")</td><td>279 &euro;</td><td>409 &euro;</td><td>539 &euro;</td><td>579 &euro;</td></tr>
+                <tr><td>35 cm (14")</td><td>369 &euro;</td><td>499 &euro;</td><td>679 &euro;</td><td>719 &euro;</td></tr>
+                <tr><td>40 cm (16")</td><td>469 &euro;</td><td>599 &euro;</td><td>779 &euro;</td><td>819 &euro;</td></tr>
+                <tr><td class="highlight">45 cm (18")</td><td class="highlight"><span class="highlight">569 &euro;</span></td><td class="highlight"><span class="highlight">709 &euro;</span></td><td class="highlight"><span class="highlight">1019 &euro;</span></td><td class="highlight"><span class="highlight">1059 &euro;</span></td></tr>
+                <tr><td class="highlight">50 cm (20")</td><td class="highlight"><span class="highlight">639 &euro;</span></td><td class="highlight"><span class="highlight">779 &euro;</span></td><td class="highlight"><span class="highlight">1079 &euro;</span></td><td class="highlight"><span class="highlight">1119 &euro;</span></td></tr>
+                <tr><td>55 cm (22")</td><td>739 &euro;</td><td>879 &euro;</td><td>1309 &euro;</td><td>1349 &euro;</td></tr>
+                <tr><td>60 cm (24")</td><td>849 &euro;</td><td>979 &euro;</td><td>1369 &euro;</td><td>1409 &euro;</td></tr>
+                <tr><td>65 cm (26")</td><td>949 &euro;</td><td>1089 &euro;</td><td>1499 &euro;</td><td>1539 &euro;</td></tr>
+                <tr><td>70 cm (28")</td><td>1049 &euro;</td><td>1189 &euro;</td><td>1699 &euro;</td><td>1739 &euro;</td></tr>
+                <tr><td>75 cm (30")</td><td>1149 &euro;</td><td>1289 &euro;</td><td>1819 &euro;</td><td>1859 &euro;</td></tr>
+                <tr><td>80 cm (32")</td><td>1299 &euro;</td><td>1439 &euro;</td><td>1969 &euro;</td><td>2009 &euro;</td></tr>
+            </tbody>
+        </table>
+                </div>
             </div>
         </div>
-
 
         <div class="price-note">
-            <strong>Hinweise zu den Preisen:</strong><br>
-            Alle Preise sind Großhandelspreise in Euro pro Kilogramm (1 kg &asymp; 10 Stück), exkl. Versand. Wechselkurs: 1 USD = 0,92 EUR.<br><br>
-            <strong>Aufpreise (Spezialbehandlungen):</strong> Balayage / Ombré / Piano: +9 &euro;/kg &bull; Locken & Wellen: +18 &euro;/kg &bull; Bone Straight: +28 &euro;/kg<br><br>
-            <strong>Hinweis:</strong> Die Preise für Keratin, Tape-In, Tressen und Genius-Tresse werden aktuell mit der Fabrik abgestimmt. Für ein verbindliches Angebot kontaktieren Sie uns direkt.
+            <strong>Hinweis zu den Preisen:</strong><br>
+            Alle Preise in EUR/kg (1 kg ≈ 10 Stück), exkl. Versand.<br>
+            <strong>Aufpreise:</strong> Piano/Balayage/Ombré +10&euro;/kg • Locken & Wellen +20&euro;/kg • Bone Straight +30&euro;/kg
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- QUALITY -->
 <section id="qualitaet">
@@ -1031,7 +1396,7 @@
                             <option value="keratin">Keratin-Bondings</option>
                             <option value="tape">Tape-In Extensions</option>
                             <option value="weft">Tressen (Weft)</option>
-                            <option value="genius">Genius-Tresse</option>
+                            <option value="clip">Clip & Ponytail</option>
                             <option value="bulk">Rohhaar (Bulk)</option>
                             <option value="all">Gesamtes Sortiment</option>
                         </select>
@@ -1079,8 +1444,20 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Preis-Tabs
-function showTab(name) {
+
+// Quality selector for price tables
+function showQuality(product, quality) {
+    const contentDivs = document.querySelectorAll(`[id^="quality-${product}-"]`);
+    contentDivs.forEach(div => div.style.display = 'none');
+    document.getElementById(`quality-${product}-${quality}`).style.display = 'block';
+
+    const buttons = document.querySelectorAll(`[onclick*="showQuality('${product}'"]`);
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+
+(name) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active'));
     document.getElementById('tab-' + name).classList.add('active');
