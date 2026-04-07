@@ -618,29 +618,29 @@
         <div class="section-subtitle">Alle Preise in Euro pro Kilogramm. Preise variieren je nach Produkttyp, Qualität und Farbe.</div>
 
                     <div class="price-tabs">
-                <button class="tab-button active" onclick="showTab('keratin')">
+                <button class="price-tab active" onclick="showTab('keratin')">
                     Keratin-Bondings
                 </button>
-                <button class="tab-button " onclick="showTab('tape')">
+                <button class="price-tab" onclick="showTab('tape')">
                     Tape-In
                 </button>
-                <button class="tab-button " onclick="showTab('weft')">
+                <button class="price-tab" onclick="showTab('weft')">
                     Tressen
                 </button>
-                <button class="tab-button " onclick="showTab('bulk')">
+                <button class="price-tab" onclick="showTab('bulk')">
                     Rohhaar
                 </button>
-                <button class="tab-button " onclick="showTab('clip')">
+                <button class="price-tab" onclick="showTab('clip')">
                     Clip & Ponytail
                 </button>
             </div>
-            <div id="tab-keratin" class="tab-pane active" >
+            <div id="tab-keratin" class="tab-content active" >
                     <div class="tab-content">
                         <div class="quality-selector">
                             <button class="quality-btn active" onclick="showQuality('keratin', 'sd')">Single Drawn</button>
                             <button class="quality-btn" onclick="showQuality('keratin', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('keratin', 'sdd')">Super Double Drawn</button>
-                        </div>                            <div id="quality-keratin-sd" class="price-table" style="">
+                        </div>                            <div id="quality-keratin-sd" class="quality-panel" style="">
                                 <table>
                                     <thead>
                                         <tr>
@@ -745,7 +745,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-keratin-dd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-keratin-dd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -850,7 +850,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-keratin-sdd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-keratin-sdd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -957,13 +957,13 @@
                                 </table>
                             </div>                    </div>
             </div>
-            <div id="tab-tape" class="tab-pane " style="display:none;">
+            <div id="tab-tape" class="tab-content" style="display:none;">
                     <div class="tab-content">
                         <div class="quality-selector">
                             <button class="quality-btn active" onclick="showQuality('tape', 'sd')">Single Drawn</button>
                             <button class="quality-btn" onclick="showQuality('tape', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('tape', 'sdd')">Super Double Drawn</button>
-                        </div>                            <div id="quality-tape-sd" class="price-table" style="">
+                        </div>                            <div id="quality-tape-sd" class="quality-panel" style="">
                                 <table>
                                     <thead>
                                         <tr>
@@ -1068,7 +1068,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-tape-dd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-tape-dd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -1173,7 +1173,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-tape-sdd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-tape-sdd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -1280,13 +1280,13 @@
                                 </table>
                             </div>                    </div>
             </div>
-            <div id="tab-weft" class="tab-pane " style="display:none;">
+            <div id="tab-weft" class="tab-content" style="display:none;">
                     <div class="tab-content">
                         <div class="quality-selector">
                             <button class="quality-btn active" onclick="showQuality('weft', 'sd')">Single Drawn</button>
                             <button class="quality-btn" onclick="showQuality('weft', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('weft', 'sdd')">Super Double Drawn</button>
-                        </div>                            <div id="quality-weft-sd" class="price-table" style="">
+                        </div>                            <div id="quality-weft-sd" class="quality-panel" style="">
                                 <table>
                                     <thead>
                                         <tr>
@@ -1391,7 +1391,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-weft-dd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-weft-dd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -1496,7 +1496,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-weft-sdd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-weft-sdd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -1603,13 +1603,13 @@
                                 </table>
                             </div>                    </div>
             </div>
-            <div id="tab-bulk" class="tab-pane " style="display:none;">
+            <div id="tab-bulk" class="tab-content" style="display:none;">
                     <div class="tab-content">
                         <div class="quality-selector">
                             <button class="quality-btn active" onclick="showQuality('bulk', 'sd')">Single Drawn</button>
                             <button class="quality-btn" onclick="showQuality('bulk', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('bulk', 'sdd')">Super Double Drawn</button>
-                        </div>                            <div id="quality-bulk-sd" class="price-table" style="">
+                        </div>                            <div id="quality-bulk-sd" class="quality-panel" style="">
                                 <table>
                                     <thead>
                                         <tr>
@@ -1714,7 +1714,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-bulk-dd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-bulk-dd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -1819,7 +1819,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-bulk-sdd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-bulk-sdd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -1926,13 +1926,13 @@
                                 </table>
                             </div>                    </div>
             </div>
-            <div id="tab-clip" class="tab-pane " style="display:none;">
+            <div id="tab-clip" class="tab-content" style="display:none;">
                     <div class="tab-content">
                         <div class="quality-selector">
                             <button class="quality-btn active" onclick="showQuality('clip', 'sd')">Single Drawn</button>
                             <button class="quality-btn" onclick="showQuality('clip', 'dd')">Double Drawn</button>
                             <button class="quality-btn" onclick="showQuality('clip', 'sdd')">Super Double Drawn</button>
-                        </div>                            <div id="quality-clip-sd" class="price-table" style="">
+                        </div>                            <div id="quality-clip-sd" class="quality-panel" style="">
                                 <table>
                                     <thead>
                                         <tr>
@@ -2037,7 +2037,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-clip-dd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-clip-dd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -2142,7 +2142,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                            <div id="quality-clip-sdd" class="price-table" style="display: none;">
+                            </div>                            <div id="quality-clip-sdd" class="quality-panel" style="display: none;">
                                 <table>
                                     <thead>
                                         <tr>
@@ -2560,25 +2560,25 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // Quality Selector
 function showQuality(product, quality) {
-    // Hide all quality divs for this product
     const divs = document.querySelectorAll(`div[id^="quality-${product}-"]`);
     divs.forEach(div => div.style.display = 'none');
-
-    // Show the selected one
-    document.getElementById(`quality-${product}-${quality}`).style.display = 'table';
-
-    // Update button active states
+    const target = document.getElementById(`quality-${product}-${quality}`);
+    if (target) target.style.display = 'block';
     const buttons = document.querySelectorAll(`#tab-${product} .quality-btn`);
     buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    if (event && event.target) event.target.classList.add('active');
 }
 
 // Preis-Tabs
 function showTab(name) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => {
+        t.style.display = 'none';
+        t.classList.remove('active');
+    });
     document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tab-' + name).classList.add('active');
-    event.target.classList.add('active');
+    const tab = document.getElementById('tab-' + name);
+    if (tab) { tab.style.display = 'block'; tab.classList.add('active'); }
+    if (event && event.target) event.target.classList.add('active');
 }
 
 // Formular (Platzhalter)
