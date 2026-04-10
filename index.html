@@ -3204,8 +3204,23 @@ function sendCalcToWhatsApp() {
     window.open(url, '_blank');
 }
 
+function resetCalc() {
+    const container = document.getElementById('calc-items');
+    if (!container) return;
+    container.innerHTML = '';
+    calcItemCounter = 0;
+    addCalcItem();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    addCalcItem(); // mit einem Produkt starten
+    resetCalc(); // mit einem frischen Produkt starten
+});
+
+// Fix bfcache: Browser restauriert Seite aus Speicher inkl. alter Werte
+window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+        resetCalc();
+    }
 });
 </script>
 
