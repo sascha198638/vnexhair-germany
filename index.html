@@ -2394,7 +2394,17 @@
                 </div>
                 <div class="calc-total"><span>Gesamtkosten</span><span id="r-total">–</span></div>
             </div>
-            <div class="calc-note">Stand: April 2026 · Versand wird einmalig auf das Gesamtgewicht aller Produkte berechnet (DHL Express Vietnam&nbsp;→&nbsp;Deutschland, 3–5 Werktage)</div>
+
+            <div style="text-align:center; margin-top:1.75rem;">
+                <button type="button" class="btn btn-gold" style="padding:1rem 2.5rem; font-family:'Inter',sans-serif; font-size:0.85rem; letter-spacing:1px; text-transform:uppercase; cursor:pointer; border:none;" onclick="sendCalcToContact()">
+                    Unverbindliche Anfrage mit dieser Kalkulation senden
+                </button>
+                <p style="font-size:0.72rem; color:var(--gray); margin-top:0.8rem; font-style:italic;">
+                    Ihre Kalkulation wird automatisch ins Kontaktformular übernommen · keine Verpflichtung · Antwort innerhalb von 24&nbsp;Stunden
+                </p>
+            </div>
+
+            <div class="calc-note" style="margin-top:1.5rem;">Stand: April 2026 · Versand wird einmalig auf das Gesamtgewicht aller Produkte berechnet (DHL Express Vietnam&nbsp;→&nbsp;Deutschland, 3–5 Werktage)</div>
         </div>
     </div>
 </section>
@@ -3063,6 +3073,87 @@ function updateCalc() {
     document.getElementById('r-vat').textContent      = fmtEur(vat);
     document.getElementById('r-sub-cus').textContent  = fmtEur(duty + vat);
     document.getElementById('r-total').textContent    = fmtEur(total);
+}
+
+const CALC_LABELS = {
+    product: {
+        keratin: 'Keratin-Bondings',
+        tape:    'Tape-In',
+        weft:    'Tressen (Weft)',
+        bulk:    'Rohhaar (Bulk)',
+        clip:    'Clip-In'
+    },
+    quality: {
+        sd:  'Single Drawn',
+        dd:  'Double Drawn',
+        sdd: 'Super Double Drawn'
+    },
+    color: {
+        natural: 'Naturfarbe #1/#1b',
+        dark:    'Dunkel #2-#30',
+        light:   'Hell #10-#20',
+        blond:   'Blond #22-#120'
+    },
+    surcharge: {
+        '0':  '',
+        '10': ' + Piano/Balayage',
+        '20': ' + Locken/Wellen',
+        '30': ' + Bone Straight'
+    }
+};
+
+function sendCalcToContact() {
+    const lines = [];
+    lines.push('Unverbindliche Anfrage zu folgender Kalkulation:');
+    lines.push('');
+
+    let totalKg = 0;
+    let totalGoods = 0;
+
+    document.querySelectorAll('#calc-items .calc-item').forEach((item, i) => {
+        const p = item.querySelector('.c-product').value;
+        const q = item.querySelector('.c-quality').value;
+        const c = item.querySelector('.c-color').value;
+        const l = item.querySelector('.c-length').value;
+        const kg = parseFloat(item.querySelector('.c-weight').value) || 0;
+        const s = parseFloat(item.querySelector('.c-surcharge').value) || 0;
+
+        const base = CALC_CONFIG.PRICES[p]?.[q]?.[c]?.[l] || 0;
+        const ppk = base + s;
+        const lineGoods = ppk * kg;
+        totalGoods += lineGoods;
+        totalKg += kg;
+
+        lines.push(`Produkt ${i + 1}: ${CALC_LABELS.product[p]} · ${CALC_LABELS.quality[q]} · ${CALC_LABELS.color[c]} · ${l} cm${CALC_LABELS.surcharge[s] || ''}`);
+        lines.push(`  Menge: ${fmtKg(kg)} · Preis: ${fmtEur(ppk)}/kg · Zwischensumme: ${fmtEur(lineGoods)}`);
+    });
+
+    const ship = calcShipping(totalKg);
+    const cif  = totalGoods + ship;
+    const duty = cif * CALC_CONFIG.DUTY_RATE;
+    const vat  = (cif + duty) * CALC_CONFIG.VAT_RATE;
+    const total = cif + duty + vat;
+
+    lines.push('');
+    lines.push('— Kostenübersicht —');
+    lines.push(`Warenwert gesamt: ${fmtEur(totalGoods)}`);
+    lines.push(`Luftfracht (${fmtKg(totalKg)}): ${fmtEur(ship)}`);
+    lines.push(`An den Hersteller: ${fmtEur(cif)}`);
+    lines.push(`Einfuhrzoll 1,7 %: ${fmtEur(duty)}`);
+    lines.push(`EUSt 19 %: ${fmtEur(vat)}`);
+    lines.push(`An den deutschen Zoll: ${fmtEur(duty + vat)}`);
+    lines.push(`GESAMTKOSTEN: ${fmtEur(total)}`);
+    lines.push('');
+    lines.push('Bitte senden Sie mir ein konkretes Angebot. Vielen Dank!');
+
+    const textarea = document.querySelector('textarea[name="message"]');
+    if (textarea) {
+        textarea.value = lines.join('\n');
+    }
+
+    const target = document.getElementById('kontakt');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => { textarea && textarea.focus(); }, 600);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
