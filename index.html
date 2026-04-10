@@ -2967,7 +2967,7 @@ function buildCalcItem(idx) {
         <div class="calc-grid">
             <div class="calc-field">
                 <label>Produkt</label>
-                <select class="c-product" onchange="updateCalc()">
+                <select class="c-product" onchange="updateCalc()" autocomplete="off">
                     <option value="keratin">Keratin-Bondings</option>
                     <option value="tape">Tape-In</option>
                     <option value="weft">Tressen (Weft)</option>
@@ -2977,29 +2977,29 @@ function buildCalcItem(idx) {
             </div>
             <div class="calc-field">
                 <label>Qualität</label>
-                <select class="c-quality" onchange="updateCalc()">
+                <select class="c-quality" onchange="updateCalc()" autocomplete="off">
                     <option value="sd">Single Drawn</option>
-                    <option value="dd" selected>Double Drawn</option>
+                    <option value="dd">Double Drawn</option>
                     <option value="sdd">Super Double Drawn</option>
                 </select>
             </div>
             <div class="calc-field">
                 <label>Farbe</label>
-                <select class="c-color" onchange="updateCalc()">
+                <select class="c-color" onchange="updateCalc()" autocomplete="off">
                     <option value="natural">Naturfarbe #1, #1b</option>
-                    <option value="dark" selected>Dunkle Farben #2–#30</option>
+                    <option value="dark">Dunkle Farben #2–#30</option>
                     <option value="light">Helle Farben #10–#20</option>
                     <option value="blond">Blond #22–#120</option>
                 </select>
             </div>
             <div class="calc-field">
                 <label>Länge</label>
-                <select class="c-length" onchange="updateCalc()">
+                <select class="c-length" onchange="updateCalc()" autocomplete="off">
                     <option value="20">20 cm</option>
                     <option value="25">25 cm</option>
                     <option value="30">30 cm</option>
                     <option value="35">35 cm</option>
-                    <option value="40" selected>40 cm</option>
+                    <option value="40">40 cm</option>
                     <option value="45">45 cm</option>
                     <option value="50">50 cm</option>
                     <option value="55">55 cm</option>
@@ -3008,11 +3008,11 @@ function buildCalcItem(idx) {
             </div>
             <div class="calc-field">
                 <label>Menge (kg)</label>
-                <input type="number" class="c-weight" min="0.1" step="0.1" value="1" oninput="updateCalc()">
+                <input type="number" class="c-weight" min="0.1" step="0.1" value="1" oninput="updateCalc()" autocomplete="off">
             </div>
             <div class="calc-field">
                 <label>Aufpreis</label>
-                <select class="c-surcharge" onchange="updateCalc()">
+                <select class="c-surcharge" onchange="updateCalc()" autocomplete="off">
                     <option value="0">Keiner</option>
                     <option value="10">Piano / Balayage / Ombré (+10 €/kg)</option>
                     <option value="20">Locken / Wellen (+20 €/kg)</option>
@@ -3036,7 +3036,15 @@ function renumberCalcItems() {
 
 function addCalcItem() {
     const container = document.getElementById('calc-items');
-    container.appendChild(buildCalcItem(calcItemCounter++));
+    const item = buildCalcItem(calcItemCounter++);
+    container.appendChild(item);
+    // Explizit Defaults setzen, um Browser-Autofill zu umgehen
+    item.querySelector('.c-product').value = 'keratin';
+    item.querySelector('.c-quality').value = 'dd';
+    item.querySelector('.c-color').value = 'dark';
+    item.querySelector('.c-length').value = '40';
+    item.querySelector('.c-weight').value = '1';
+    item.querySelector('.c-surcharge').value = '0';
     renumberCalcItems();
     updateCalc();
 }
