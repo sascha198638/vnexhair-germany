@@ -233,6 +233,60 @@
             border: 1px solid rgba(201,168,76,0.15);
         }
 
+        /* COST CALCULATOR */
+        .calc-section { background: #0f0f0f; }
+        .calc-wrap {
+            max-width: 900px; margin: 0 auto;
+            background: var(--dark-card);
+            border: 1px solid rgba(201,168,76,0.15);
+            border-radius: 8px; padding: 2.5rem;
+        }
+        .calc-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 2rem; margin-bottom: 2rem;
+        }
+        @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+        .calc-field label {
+            display: block; font-size: 0.75rem; letter-spacing: 1px;
+            text-transform: uppercase; color: var(--gold);
+            margin-bottom: 0.5rem; font-weight: 500;
+        }
+        .calc-field select, .calc-field input {
+            width: 100%; padding: 0.85rem 1rem;
+            background: #0a0a0a; color: #fff;
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 4px; font-size: 0.95rem;
+            font-family: inherit; transition: border-color 0.3s;
+        }
+        .calc-field select:focus, .calc-field input:focus {
+            outline: none; border-color: var(--gold);
+        }
+        .calc-result {
+            background: #0a0a0a; border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 6px; padding: 1.5rem 2rem;
+        }
+        .calc-row {
+            display: flex; justify-content: space-between;
+            padding: 0.6rem 0; font-size: 0.92rem;
+            color: var(--gray-light);
+            border-bottom: 1px dashed rgba(201,168,76,0.08);
+        }
+        .calc-row:last-child { border-bottom: none; }
+        .calc-row span:last-child { color: #fff; font-variant-numeric: tabular-nums; }
+        .calc-total {
+            display: flex; justify-content: space-between;
+            margin-top: 1rem; padding-top: 1.2rem;
+            border-top: 2px solid var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; color: var(--gold);
+        }
+        .calc-total span:last-child { font-variant-numeric: tabular-nums; }
+        .calc-note {
+            text-align: center; margin-top: 1.5rem;
+            font-size: 0.75rem; color: var(--gray);
+            font-style: italic;
+        }
+
         /* PRICE TABLES */
         .price-section { background: var(--dark); }
         .price-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
@@ -463,6 +517,7 @@
             <li><a href="#ueber-uns">Über uns</a></li>
             <li><a href="#produkte">Produkte</a></li>
             <li><a href="#preise">Preise</a></li>
+            <li><a href="#rechner">Rechner</a></li>
             <li><a href="#qualitaet">Qualität</a></li>
             <li><a href="#vorteile">Vorteile</a></li>
             <li><a href="#kontakt" class="nav-cta">Anfrage senden</a></li>
@@ -2253,6 +2308,85 @@
     </div>
 </section>
 
+<!-- COST CALCULATOR -->
+<section id="rechner" class="calc-section">
+    <div class="section-inner">
+        <div class="section-label">Gesamtkosten-Rechner</div>
+        <div class="section-title">Transparente Kalkulation inkl. Versand &amp; Zoll</div>
+        <div class="divider"></div>
+        <div class="section-subtitle">Berechnen Sie die Gesamtkosten inklusive Luftfracht ab Vietnam, Einfuhrzoll (1,7&nbsp;%) und Einfuhrumsatzsteuer (19&nbsp;%). Alle Angaben unverbindlich.</div>
+
+        <div class="calc-wrap">
+            <div class="calc-grid">
+                <div class="calc-field">
+                    <label for="calc-product">Produkt</label>
+                    <select id="calc-product" onchange="updateCalc()">
+                        <option value="keratin">Keratin-Bondings</option>
+                        <option value="tape">Tape-In</option>
+                        <option value="weft">Tressen (Weft)</option>
+                        <option value="bulk">Rohhaar (Bulk)</option>
+                        <option value="clip">Clip-In</option>
+                    </select>
+                </div>
+                <div class="calc-field">
+                    <label for="calc-quality">Qualität</label>
+                    <select id="calc-quality" onchange="updateCalc()">
+                        <option value="sd">Single Drawn</option>
+                        <option value="dd" selected>Double Drawn</option>
+                        <option value="sdd">Super Double Drawn</option>
+                    </select>
+                </div>
+                <div class="calc-field">
+                    <label for="calc-color">Farbe</label>
+                    <select id="calc-color" onchange="updateCalc()">
+                        <option value="natural">Naturfarbe #1, #1b</option>
+                        <option value="dark" selected>Dunkle Farben #2–#30</option>
+                        <option value="light">Helle Farben #10–#20</option>
+                        <option value="blond">Blond #22–#120</option>
+                    </select>
+                </div>
+                <div class="calc-field">
+                    <label for="calc-length">Länge</label>
+                    <select id="calc-length" onchange="updateCalc()">
+                        <option value="20">20 cm</option>
+                        <option value="25">25 cm</option>
+                        <option value="30">30 cm</option>
+                        <option value="35">35 cm</option>
+                        <option value="40" selected>40 cm</option>
+                        <option value="45">45 cm</option>
+                        <option value="50">50 cm</option>
+                        <option value="55">55 cm</option>
+                        <option value="60">60 cm</option>
+                    </select>
+                </div>
+                <div class="calc-field">
+                    <label for="calc-weight">Bestellmenge (kg)</label>
+                    <input id="calc-weight" type="number" min="0.1" step="0.1" value="1" oninput="updateCalc()">
+                </div>
+                <div class="calc-field">
+                    <label for="calc-surcharge">Aufpreis (Textur/Balayage)</label>
+                    <select id="calc-surcharge" onchange="updateCalc()">
+                        <option value="0">Keiner (Glatt, Einfarbig)</option>
+                        <option value="10">Piano / Balayage / Ombré (+10 €/kg)</option>
+                        <option value="20">Locken / Wellen (+20 €/kg)</option>
+                        <option value="30">Bone Straight (+30 €/kg)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="calc-result">
+                <div class="calc-row"><span>Warenwert</span><span id="r-goods">–</span></div>
+                <div class="calc-row"><span>Luftfracht ab Vietnam</span><span id="r-ship">–</span></div>
+                <div class="calc-row"><span>Zollwert (Ware + Fracht)</span><span id="r-cif">–</span></div>
+                <div class="calc-row"><span>Einfuhrzoll 1,7&nbsp;% (HS 6703)</span><span id="r-duty">–</span></div>
+                <div class="calc-row"><span>Einfuhrumsatzsteuer 19&nbsp;%</span><span id="r-vat">–</span></div>
+                <div class="calc-total"><span>Gesamtkosten</span><span id="r-total">–</span></div>
+            </div>
+            <div class="calc-note">Stand: April 2026 · Versandkosten basieren auf DHL Express Vietnam&nbsp;→&nbsp;Deutschland · Lieferzeit 3–5 Werktage</div>
+        </div>
+    </div>
+</section>
+
 <!-- QUALITY -->
 <section id="qualitaet">
     <div class="section-inner">
@@ -2631,6 +2765,182 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+/* ============================================================
+   COST CALCULATOR — easy-to-update config
+   ============================================================
+   Update the numbers below when prices or shipping rates change.
+   - PRICES: product → quality → color → length = EUR/kg
+   - SHIPPING: weight in kg → EUR (DHL Express Vietnam→Germany)
+   - DUTY_RATE: German import duty for HS 6703 (human hair) = 1.7%
+   - VAT_RATE: German import VAT (EUSt) = 19%
+   ============================================================ */
+const CALC_CONFIG = {
+    DUTY_RATE: 0.017,   // 1,7 % Einfuhrzoll HS 6703
+    VAT_RATE: 0.19,     // 19 % Einfuhrumsatzsteuer
+
+    // Luftfracht EUR pro Sendung, gestaffelt nach Gewicht (kg).
+    // Stand: Umrechnung aus Januar-Tabelle Hoang (USD→EUR ÷1.08).
+    // BEI UPDATE einfach Werte ersetzen:
+    SHIPPING: [
+        { maxKg: 1,  eur: 57 },
+        { maxKg: 2,  eur: 82 },
+        { maxKg: 3,  eur: 107 },
+        { maxKg: 4,  eur: 132 },
+        { maxKg: 5,  eur: 157 },
+        { maxKg: 6,  eur: 182 },
+        { maxKg: 7,  eur: 207 },
+        { maxKg: 8,  eur: 232 },
+        { maxKg: 9,  eur: 255 },
+        { maxKg: 10, eur: 278 }
+    ],
+    // Für Gewichte > 10 kg: Preis pro zusätzlichem kg
+    SHIPPING_PER_EXTRA_KG: 25,
+
+    // PREISE in EUR/kg:  PRICES[product][quality][color][length]
+    PRICES: {
+        keratin: {
+            sd: {
+                natural: {20:150,25:169,30:199,35:215,40:249,45:319,50:419,55:469,60:549},
+                dark:    {20:269,25:309,30:329,35:349,40:389,45:459,50:559,55:609,60:699},
+                light:   {20:319,25:359,30:399,35:439,40:479,45:579,50:719,55:779,60:889},
+                blond:   {20:359,25:399,30:439,35:479,40:519,45:619,50:759,55:819,60:929}
+            },
+            dd: {
+                natural: {20:180,25:199,30:229,35:249,40:289,45:369,50:479,55:529,60:619},
+                dark:    {20:299,25:349,30:369,35:399,40:439,45:519,50:629,55:689,60:789},
+                light:   {20:349,25:399,30:449,35:489,40:539,45:649,50:789,55:859,60:969},
+                blond:   {20:389,25:439,30:489,35:529,40:579,45:689,50:839,55:899,60:1009}
+            },
+            sdd: {
+                natural: {20:219,25:239,30:269,35:299,40:339,45:419,50:549,55:609,60:719},
+                dark:    {20:339,25:389,30:419,35:449,40:499,45:589,50:719,55:789,60:909},
+                light:   {20:389,25:449,30:499,35:549,40:599,45:729,50:889,55:969,60:1099},
+                blond:   {20:429,25:489,30:549,35:599,40:649,45:769,50:949,55:1019,60:1149}
+            }
+        },
+        tape: {
+            sd: {
+                natural: {20:150,25:169,30:199,35:215,40:249,45:319,50:419,55:469,60:549},
+                dark:    {20:269,25:309,30:329,35:349,40:389,45:459,50:559,55:609,60:699},
+                light:   {20:319,25:359,30:399,35:439,40:479,45:579,50:719,55:779,60:889},
+                blond:   {20:359,25:399,30:439,35:479,40:519,45:619,50:759,55:819,60:929}
+            },
+            dd: {
+                natural: {20:180,25:199,30:229,35:249,40:289,45:369,50:479,55:529,60:619},
+                dark:    {20:299,25:349,30:369,35:399,40:439,45:519,50:629,55:689,60:789},
+                light:   {20:349,25:399,30:449,35:489,40:539,45:649,50:789,55:859,60:969},
+                blond:   {20:389,25:439,30:489,35:529,40:579,45:689,50:839,55:899,60:1009}
+            },
+            sdd: {
+                natural: {20:219,25:239,30:269,35:299,40:339,45:419,50:549,55:609,60:719},
+                dark:    {20:339,25:389,30:419,35:449,40:499,45:589,50:719,55:789,60:909},
+                light:   {20:389,25:449,30:499,35:549,40:599,45:729,50:889,55:969,60:1099},
+                blond:   {20:429,25:489,30:549,35:599,40:649,45:769,50:949,55:1019,60:1149}
+            }
+        },
+        weft: {
+            sd: {
+                natural: {20:130,25:149,30:179,35:195,40:229,45:299,50:399,55:449,60:529},
+                dark:    {20:249,25:289,30:309,35:329,40:369,45:439,50:539,55:589,60:679},
+                light:   {20:299,25:339,30:379,35:419,40:459,45:559,50:699,55:759,60:869},
+                blond:   {20:339,25:379,30:419,35:459,40:499,45:599,50:739,55:799,60:909}
+            },
+            dd: {
+                natural: {20:160,25:179,30:209,35:229,40:269,45:349,50:459,55:509,60:599},
+                dark:    {20:279,25:329,30:349,35:379,40:419,45:499,50:609,55:669,60:769},
+                light:   {20:329,25:379,30:429,35:469,40:519,45:629,50:769,55:839,60:949},
+                blond:   {20:369,25:419,30:469,35:509,40:559,45:669,50:819,55:879,60:989}
+            },
+            sdd: {
+                natural: {20:199,25:219,30:249,35:279,40:319,45:399,50:529,55:589,60:699},
+                dark:    {20:319,25:369,30:399,35:429,40:479,45:569,50:699,55:769,60:889},
+                light:   {20:369,25:429,30:479,35:529,40:579,45:709,50:869,55:949,60:1079},
+                blond:   {20:409,25:469,30:529,35:579,40:629,45:749,50:929,55:999,60:1129}
+            }
+        },
+        bulk: {
+            sd: {
+                natural: {20:110,25:129,30:149,35:175,40:199,45:259,50:349,55:399,60:479},
+                dark:    {20:219,25:249,30:279,35:309,40:339,45:409,50:509,55:559,60:649},
+                light:   {20:269,25:309,30:349,35:389,40:429,45:529,50:669,55:729,60:839},
+                blond:   {20:309,25:349,30:389,35:429,40:469,45:569,50:709,55:769,60:879}
+            },
+            dd: {
+                natural: {20:140,25:159,30:179,35:209,40:239,45:309,50:409,55:459,60:549},
+                dark:    {20:249,25:289,30:319,35:349,40:389,45:469,50:579,55:639,60:739},
+                light:   {20:299,25:349,30:399,35:439,40:489,45:599,50:739,55:809,60:919},
+                blond:   {20:339,25:389,30:439,35:479,40:529,45:639,50:789,55:849,60:959}
+            },
+            sdd: {
+                natural: {20:179,25:199,30:219,35:259,40:289,45:359,50:479,55:539,60:649},
+                dark:    {20:289,25:329,30:369,35:399,40:449,45:539,50:669,55:739,60:859},
+                light:   {20:339,25:399,30:449,35:499,40:549,45:679,50:839,55:919,60:1049},
+                blond:   {20:379,25:439,30:499,35:549,40:599,45:719,50:899,55:969,60:1099}
+            }
+        },
+        clip: {
+            sd: {
+                natural: {20:170,25:189,30:219,35:235,40:269,45:339,50:439,55:489,60:569},
+                dark:    {20:289,25:329,30:349,35:369,40:409,45:479,50:579,55:629,60:719},
+                light:   {20:339,25:379,30:419,35:459,40:499,45:599,50:739,55:799,60:909},
+                blond:   {20:379,25:419,30:459,35:499,40:539,45:639,50:779,55:839,60:949}
+            },
+            dd: {
+                natural: {20:200,25:219,30:249,35:269,40:309,45:389,50:499,55:549,60:639},
+                dark:    {20:319,25:369,30:389,35:419,40:459,45:539,50:649,55:709,60:809},
+                light:   {20:369,25:419,30:469,35:509,40:559,45:669,50:809,55:879,60:989},
+                blond:   {20:409,25:459,30:509,35:549,40:599,45:709,50:859,55:919,60:1029}
+            },
+            sdd: {
+                natural: {20:239,25:259,30:289,35:319,40:359,45:439,50:569,55:629,60:739},
+                dark:    {20:359,25:409,30:439,35:469,40:519,45:609,50:739,55:809,60:929},
+                light:   {20:409,25:469,30:519,35:569,40:619,45:749,50:909,55:989,60:1119},
+                blond:   {20:449,25:509,30:569,35:619,40:669,45:789,50:969,55:1039,60:1169}
+            }
+        }
+    }
+};
+
+function calcShipping(kg) {
+    if (kg <= 0) return 0;
+    for (const tier of CALC_CONFIG.SHIPPING) {
+        if (kg <= tier.maxKg) return tier.eur;
+    }
+    const last = CALC_CONFIG.SHIPPING[CALC_CONFIG.SHIPPING.length - 1];
+    return last.eur + Math.ceil(kg - last.maxKg) * CALC_CONFIG.SHIPPING_PER_EXTRA_KG;
+}
+
+function fmtEur(v) {
+    return v.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+}
+
+function updateCalc() {
+    const product = document.getElementById('calc-product').value;
+    const quality = document.getElementById('calc-quality').value;
+    const color   = document.getElementById('calc-color').value;
+    const length  = document.getElementById('calc-length').value;
+    const kg      = parseFloat(document.getElementById('calc-weight').value) || 0;
+    const surch   = parseFloat(document.getElementById('calc-surcharge').value) || 0;
+
+    const basePerKg = CALC_CONFIG.PRICES[product]?.[quality]?.[color]?.[length] || 0;
+    const pricePerKg = basePerKg + surch;
+    const goods = pricePerKg * kg;
+    const ship  = calcShipping(kg);
+    const cif   = goods + ship;
+    const duty  = cif * CALC_CONFIG.DUTY_RATE;
+    const vat   = (cif + duty) * CALC_CONFIG.VAT_RATE;
+    const total = cif + duty + vat;
+
+    document.getElementById('r-goods').textContent = fmtEur(goods) + (kg > 0 ? '  (' + fmtEur(pricePerKg) + '/kg × ' + kg + ' kg)' : '');
+    document.getElementById('r-ship').textContent  = fmtEur(ship);
+    document.getElementById('r-cif').textContent   = fmtEur(cif);
+    document.getElementById('r-duty').textContent  = fmtEur(duty);
+    document.getElementById('r-vat').textContent   = fmtEur(vat);
+    document.getElementById('r-total').textContent = fmtEur(total);
+}
+
+document.addEventListener('DOMContentLoaded', updateCalc);
 </script>
 
 </body>
