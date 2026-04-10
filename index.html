@@ -236,30 +236,76 @@
         /* COST CALCULATOR */
         .calc-section { background: #0f0f0f; }
         .calc-wrap {
-            max-width: 900px; margin: 0 auto;
+            max-width: 980px; margin: 0 auto;
             background: var(--dark-card);
             border: 1px solid rgba(201,168,76,0.15);
             border-radius: 8px; padding: 2.5rem;
         }
-        .calc-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 1.5rem 2rem; margin-bottom: 2rem;
+        .calc-item {
+            position: relative;
+            background: #0a0a0a;
+            border: 1px solid rgba(201,168,76,0.12);
+            border-radius: 6px;
+            padding: 1.5rem 1.75rem 1.25rem;
+            margin-bottom: 1rem;
         }
-        @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+        .calc-item-head {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1rem;
+        }
+        .calc-item-title {
+            font-size: 0.72rem; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--gold); font-weight: 600;
+        }
+        .calc-item-remove {
+            background: transparent; border: 1px solid rgba(201,168,76,0.25);
+            color: var(--gray-light); width: 28px; height: 28px;
+            border-radius: 50%; cursor: pointer; font-size: 1rem; line-height: 1;
+            transition: all 0.2s;
+        }
+        .calc-item-remove:hover { color: #ff6b6b; border-color: #ff6b6b; }
+        .calc-item-subtotal {
+            margin-top: 1rem; padding-top: 0.8rem;
+            border-top: 1px dashed rgba(201,168,76,0.12);
+            display: flex; justify-content: space-between;
+            font-size: 0.9rem; color: var(--gray-light);
+        }
+        .calc-item-subtotal span:last-child {
+            color: #fff; font-weight: 600; font-variant-numeric: tabular-nums;
+        }
+        .calc-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem 1.25rem;
+        }
+        @media (max-width: 800px) { .calc-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 500px) { .calc-grid { grid-template-columns: 1fr; } }
         .calc-field label {
-            display: block; font-size: 0.75rem; letter-spacing: 1px;
+            display: block; font-size: 0.68rem; letter-spacing: 1px;
             text-transform: uppercase; color: var(--gold);
-            margin-bottom: 0.5rem; font-weight: 500;
+            margin-bottom: 0.4rem; font-weight: 500;
         }
         .calc-field select, .calc-field input {
-            width: 100%; padding: 0.85rem 1rem;
-            background: #0a0a0a; color: #fff;
+            width: 100%; padding: 0.7rem 0.85rem;
+            background: #141414; color: #fff;
             border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 4px; font-size: 0.95rem;
+            border-radius: 4px; font-size: 0.88rem;
             font-family: inherit; transition: border-color 0.3s;
         }
         .calc-field select:focus, .calc-field input:focus {
             outline: none; border-color: var(--gold);
+        }
+        .calc-add-btn {
+            display: block; width: 100%;
+            padding: 0.85rem; margin-bottom: 1.5rem;
+            background: transparent; color: var(--gold);
+            border: 1px dashed rgba(201,168,76,0.35);
+            border-radius: 6px; cursor: pointer;
+            font-size: 0.82rem; font-weight: 600; letter-spacing: 1px;
+            text-transform: uppercase; font-family: inherit;
+            transition: all 0.3s;
+        }
+        .calc-add-btn:hover {
+            background: rgba(201,168,76,0.08); border-style: solid;
         }
         .calc-result { display: block; }
         .calc-block {
@@ -2330,68 +2376,14 @@
         <div class="section-subtitle">Berechnen Sie die Gesamtkosten inklusive Luftfracht ab Vietnam, Einfuhrzoll (1,7&nbsp;%) und Einfuhrumsatzsteuer (19&nbsp;%). Alle Angaben unverbindlich.</div>
 
         <div class="calc-wrap">
-            <div class="calc-grid">
-                <div class="calc-field">
-                    <label for="calc-product">Produkt</label>
-                    <select id="calc-product" onchange="updateCalc()">
-                        <option value="keratin">Keratin-Bondings</option>
-                        <option value="tape">Tape-In</option>
-                        <option value="weft">Tressen (Weft)</option>
-                        <option value="bulk">Rohhaar (Bulk)</option>
-                        <option value="clip">Clip-In</option>
-                    </select>
-                </div>
-                <div class="calc-field">
-                    <label for="calc-quality">Qualität</label>
-                    <select id="calc-quality" onchange="updateCalc()">
-                        <option value="sd">Single Drawn</option>
-                        <option value="dd" selected>Double Drawn</option>
-                        <option value="sdd">Super Double Drawn</option>
-                    </select>
-                </div>
-                <div class="calc-field">
-                    <label for="calc-color">Farbe</label>
-                    <select id="calc-color" onchange="updateCalc()">
-                        <option value="natural">Naturfarbe #1, #1b</option>
-                        <option value="dark" selected>Dunkle Farben #2–#30</option>
-                        <option value="light">Helle Farben #10–#20</option>
-                        <option value="blond">Blond #22–#120</option>
-                    </select>
-                </div>
-                <div class="calc-field">
-                    <label for="calc-length">Länge</label>
-                    <select id="calc-length" onchange="updateCalc()">
-                        <option value="20">20 cm</option>
-                        <option value="25">25 cm</option>
-                        <option value="30">30 cm</option>
-                        <option value="35">35 cm</option>
-                        <option value="40" selected>40 cm</option>
-                        <option value="45">45 cm</option>
-                        <option value="50">50 cm</option>
-                        <option value="55">55 cm</option>
-                        <option value="60">60 cm</option>
-                    </select>
-                </div>
-                <div class="calc-field">
-                    <label for="calc-weight">Bestellmenge (kg)</label>
-                    <input id="calc-weight" type="number" min="0.1" step="0.1" value="1" oninput="updateCalc()">
-                </div>
-                <div class="calc-field">
-                    <label for="calc-surcharge">Aufpreis (Textur/Balayage)</label>
-                    <select id="calc-surcharge" onchange="updateCalc()">
-                        <option value="0">Keiner (Glatt, Einfarbig)</option>
-                        <option value="10">Piano / Balayage / Ombré (+10 €/kg)</option>
-                        <option value="20">Locken / Wellen (+20 €/kg)</option>
-                        <option value="30">Bone Straight (+30 €/kg)</option>
-                    </select>
-                </div>
-            </div>
+            <div id="calc-items"></div>
+            <button type="button" class="calc-add-btn" onclick="addCalcItem()">+ Weiteres Produkt hinzufügen</button>
 
             <div class="calc-result">
                 <div class="calc-block">
                     <div class="calc-block-title">An den Hersteller (VNEXHAIR)</div>
-                    <div class="calc-row"><span>Warenwert</span><span id="r-goods">–</span></div>
-                    <div class="calc-row"><span>Luftfracht ab Vietnam</span><span id="r-ship">–</span></div>
+                    <div class="calc-row"><span>Warenwert (alle Produkte)</span><span id="r-goods">–</span></div>
+                    <div class="calc-row"><span>Luftfracht ab Vietnam <small id="r-ship-kg" style="opacity:0.6"></small></span><span id="r-ship">–</span></div>
                     <div class="calc-subtotal"><span>Zwischensumme</span><span id="r-sub-mfr">–</span></div>
                 </div>
                 <div class="calc-block">
@@ -2402,7 +2394,7 @@
                 </div>
                 <div class="calc-total"><span>Gesamtkosten</span><span id="r-total">–</span></div>
             </div>
-            <div class="calc-note">Stand: April 2026 · Versandkosten basieren auf DHL Express Vietnam&nbsp;→&nbsp;Deutschland · Lieferzeit 3–5 Werktage</div>
+            <div class="calc-note">Stand: April 2026 · Versand wird einmalig auf das Gesamtgewicht aller Produkte berechnet (DHL Express Vietnam&nbsp;→&nbsp;Deutschland, 3–5 Werktage)</div>
         </div>
     </div>
 </section>
@@ -2934,34 +2926,148 @@ function calcShipping(kg) {
 function fmtEur(v) {
     return v.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
 }
-
-function updateCalc() {
-    const product = document.getElementById('calc-product').value;
-    const quality = document.getElementById('calc-quality').value;
-    const color   = document.getElementById('calc-color').value;
-    const length  = document.getElementById('calc-length').value;
-    const kg      = parseFloat(document.getElementById('calc-weight').value) || 0;
-    const surch   = parseFloat(document.getElementById('calc-surcharge').value) || 0;
-
-    const basePerKg = CALC_CONFIG.PRICES[product]?.[quality]?.[color]?.[length] || 0;
-    const pricePerKg = basePerKg + surch;
-    const goods = pricePerKg * kg;
-    const ship  = calcShipping(kg);
-    const cif   = goods + ship;
-    const duty  = cif * CALC_CONFIG.DUTY_RATE;
-    const vat   = (cif + duty) * CALC_CONFIG.VAT_RATE;
-    const total = cif + duty + vat;
-
-    document.getElementById('r-goods').textContent   = fmtEur(goods) + (kg > 0 ? '  (' + fmtEur(pricePerKg) + '/kg × ' + kg + ' kg)' : '');
-    document.getElementById('r-ship').textContent    = fmtEur(ship);
-    document.getElementById('r-sub-mfr').textContent = fmtEur(cif);
-    document.getElementById('r-duty').textContent    = fmtEur(duty);
-    document.getElementById('r-vat').textContent     = fmtEur(vat);
-    document.getElementById('r-sub-cus').textContent = fmtEur(duty + vat);
-    document.getElementById('r-total').textContent   = fmtEur(total);
+function fmtKg(v) {
+    return v.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 2 }) + ' kg';
 }
 
-document.addEventListener('DOMContentLoaded', updateCalc);
+let calcItemCounter = 0;
+
+function buildCalcItem(idx) {
+    const el = document.createElement('div');
+    el.className = 'calc-item';
+    el.dataset.idx = idx;
+    el.innerHTML = `
+        <div class="calc-item-head">
+            <div class="calc-item-title">Produkt <span class="calc-item-num">${idx + 1}</span></div>
+            <button type="button" class="calc-item-remove" title="Entfernen" onclick="removeCalcItem(this)">×</button>
+        </div>
+        <div class="calc-grid">
+            <div class="calc-field">
+                <label>Produkt</label>
+                <select class="c-product" onchange="updateCalc()">
+                    <option value="keratin">Keratin-Bondings</option>
+                    <option value="tape">Tape-In</option>
+                    <option value="weft">Tressen (Weft)</option>
+                    <option value="bulk">Rohhaar (Bulk)</option>
+                    <option value="clip">Clip-In</option>
+                </select>
+            </div>
+            <div class="calc-field">
+                <label>Qualität</label>
+                <select class="c-quality" onchange="updateCalc()">
+                    <option value="sd">Single Drawn</option>
+                    <option value="dd" selected>Double Drawn</option>
+                    <option value="sdd">Super Double Drawn</option>
+                </select>
+            </div>
+            <div class="calc-field">
+                <label>Farbe</label>
+                <select class="c-color" onchange="updateCalc()">
+                    <option value="natural">Naturfarbe #1, #1b</option>
+                    <option value="dark" selected>Dunkle Farben #2–#30</option>
+                    <option value="light">Helle Farben #10–#20</option>
+                    <option value="blond">Blond #22–#120</option>
+                </select>
+            </div>
+            <div class="calc-field">
+                <label>Länge</label>
+                <select class="c-length" onchange="updateCalc()">
+                    <option value="20">20 cm</option>
+                    <option value="25">25 cm</option>
+                    <option value="30">30 cm</option>
+                    <option value="35">35 cm</option>
+                    <option value="40" selected>40 cm</option>
+                    <option value="45">45 cm</option>
+                    <option value="50">50 cm</option>
+                    <option value="55">55 cm</option>
+                    <option value="60">60 cm</option>
+                </select>
+            </div>
+            <div class="calc-field">
+                <label>Menge (kg)</label>
+                <input type="number" class="c-weight" min="0.1" step="0.1" value="1" oninput="updateCalc()">
+            </div>
+            <div class="calc-field">
+                <label>Aufpreis</label>
+                <select class="c-surcharge" onchange="updateCalc()">
+                    <option value="0">Keiner</option>
+                    <option value="10">Piano / Balayage / Ombré (+10 €/kg)</option>
+                    <option value="20">Locken / Wellen (+20 €/kg)</option>
+                    <option value="30">Bone Straight (+30 €/kg)</option>
+                </select>
+            </div>
+        </div>
+        <div class="calc-item-subtotal">
+            <span class="c-subinfo">–</span>
+            <span class="c-sub">–</span>
+        </div>
+    `;
+    return el;
+}
+
+function renumberCalcItems() {
+    document.querySelectorAll('#calc-items .calc-item').forEach((el, i) => {
+        el.querySelector('.calc-item-num').textContent = i + 1;
+    });
+}
+
+function addCalcItem() {
+    const container = document.getElementById('calc-items');
+    container.appendChild(buildCalcItem(calcItemCounter++));
+    renumberCalcItems();
+    updateCalc();
+}
+
+function removeCalcItem(btn) {
+    const items = document.querySelectorAll('#calc-items .calc-item');
+    if (items.length <= 1) return; // mindestens 1 behalten
+    btn.closest('.calc-item').remove();
+    renumberCalcItems();
+    updateCalc();
+}
+
+function updateCalc() {
+    let totalGoods = 0;
+    let totalKg = 0;
+
+    document.querySelectorAll('#calc-items .calc-item').forEach(item => {
+        const product = item.querySelector('.c-product').value;
+        const quality = item.querySelector('.c-quality').value;
+        const color   = item.querySelector('.c-color').value;
+        const length  = item.querySelector('.c-length').value;
+        const kg      = parseFloat(item.querySelector('.c-weight').value) || 0;
+        const surch   = parseFloat(item.querySelector('.c-surcharge').value) || 0;
+
+        const basePerKg = CALC_CONFIG.PRICES[product]?.[quality]?.[color]?.[length] || 0;
+        const pricePerKg = basePerKg + surch;
+        const lineGoods = pricePerKg * kg;
+
+        totalGoods += lineGoods;
+        totalKg += kg;
+
+        item.querySelector('.c-subinfo').textContent = fmtEur(pricePerKg) + '/kg × ' + fmtKg(kg);
+        item.querySelector('.c-sub').textContent = fmtEur(lineGoods);
+    });
+
+    const ship = calcShipping(totalKg);
+    const cif  = totalGoods + ship;
+    const duty = cif * CALC_CONFIG.DUTY_RATE;
+    const vat  = (cif + duty) * CALC_CONFIG.VAT_RATE;
+    const total = cif + duty + vat;
+
+    document.getElementById('r-goods').textContent    = fmtEur(totalGoods);
+    document.getElementById('r-ship-kg').textContent  = totalKg > 0 ? '(' + fmtKg(totalKg) + ')' : '';
+    document.getElementById('r-ship').textContent     = fmtEur(ship);
+    document.getElementById('r-sub-mfr').textContent  = fmtEur(cif);
+    document.getElementById('r-duty').textContent     = fmtEur(duty);
+    document.getElementById('r-vat').textContent      = fmtEur(vat);
+    document.getElementById('r-sub-cus').textContent  = fmtEur(duty + vat);
+    document.getElementById('r-total').textContent    = fmtEur(total);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    addCalcItem(); // mit einem Produkt starten
+});
 </script>
 
 </body>
