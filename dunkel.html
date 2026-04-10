@@ -9,17 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #faf7f1;
-            --dark: #f0ebe0;
-            --dark-card: #ffffff;
-            --gold: #a88a2e;
-            --gold-light: #c9a84c;
-            --gold-dark: #7a5f16;
+            --black: #0a0a0a;
+            --dark: #1a1a1a;
+            --dark-card: #141414;
+            --gold: #c9a84c;
+            --gold-light: #e4cc7a;
+            --gold-dark: #a88a2e;
             --cream: #f5f0e8;
-            --white: #1f1a14;
-            --gray: #6b5d4f;
-            --gray-light: #5a4d42;
-            --text: #2a2420;
+            --white: #ffffff;
+            --gray: #888888;
+            --gray-light: #b0b0b0;
+            --text: #e0e0e0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -34,9 +34,9 @@
         /* NAV */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(250,247,241,0.94);
+            background: rgba(10,10,10,0.92);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(168,138,46,0.20);
+            border-bottom: 1px solid rgba(201,168,76,0.15);
         }
         .nav-inner {
             max-width: 1200px; margin: 0 auto;
@@ -71,13 +71,13 @@
             min-height: 100vh;
             display: flex; align-items: center; justify-content: center;
             position: relative;
-            background: linear-gradient(160deg, #faf7f1 0%, #ebe4d6 50%, #faf7f1 100%);
+            background: linear-gradient(160deg, #0a0a0a 0%, #1a1510 50%, #0a0a0a 100%);
             overflow: hidden;
         }
         .hero::before {
             content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(168,138,46,0.10) 0%, transparent 70%),
-                        radial-gradient(ellipse at 70% 30%, rgba(168,138,46,0.08) 0%, transparent 60%);
+            background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+                        radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.04) 0%, transparent 60%);
         }
         .hero-content { text-align: center; z-index: 2; max-width: 900px; padding: 2rem; }
         .hero-badge {
@@ -111,9 +111,9 @@
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: var(--black);
         }
-        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(168,138,46,0.35); }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.25); }
         .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
-        .btn-outline:hover { background: rgba(168,138,46,0.14); }
+        .btn-outline:hover { background: rgba(201,168,76,0.1); }
         .scroll-indicator {
             position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
             display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
@@ -153,8 +153,8 @@
         /* STATS */
         .stats {
             background: var(--dark);
-            border-top: 1px solid rgba(168,138,46,0.14);
-            border-bottom: 1px solid rgba(168,138,46,0.14);
+            border-top: 1px solid rgba(201,168,76,0.1);
+            border-bottom: 1px solid rgba(201,168,76,0.1);
             padding: 3rem 2rem;
         }
         .stats-grid {
@@ -175,13 +175,13 @@
         .about-image {
             aspect-ratio: 4/3; background: var(--dark);
             border-radius: 8px; overflow: hidden;
-            border: 1px solid rgba(168,138,46,0.20);
+            border: 1px solid rgba(201,168,76,0.15);
         }
         .about-image-placeholder {
             width: 100%; height: 100%;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #ebe4d6, #f5f1e8);
+            background: linear-gradient(135deg, #1a1510, #0f0f0f);
             color: var(--gold); gap: 1rem;
         }
         .about-image-placeholder svg { width: 60px; height: 60px; opacity: 0.5; }
@@ -193,13 +193,13 @@
         .about-text p { color: var(--gray-light); font-weight: 300; }
 
         /* PRODUCTS */
-        .products { background: linear-gradient(180deg, var(--black) 0%, #f2ede2 100%); }
+        .products { background: linear-gradient(180deg, var(--black) 0%, #0f0d08 100%); }
         .products-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem;
         }
         .product-card {
             background: var(--dark-card);
-            border: 1px solid rgba(168,138,46,0.14);
+            border: 1px solid rgba(201,168,76,0.1);
             border-radius: 8px; padding: 2.5rem 2rem;
             transition: all 0.4s; position: relative; overflow: hidden;
         }
@@ -212,7 +212,7 @@
         .product-card:hover::before { transform: scaleX(1); }
         .product-icon {
             width: 50px; height: 50px; border-radius: 10px;
-            background: rgba(168,138,46,0.12);
+            background: rgba(201,168,76,0.08);
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 1.5rem; color: var(--gold); font-size: 1.3rem;
         }
@@ -229,22 +229,22 @@
         .product-tag {
             font-size: 0.7rem; letter-spacing: 0.5px;
             padding: 0.35rem 0.75rem; border-radius: 20px;
-            background: rgba(168,138,46,0.12); color: var(--gold);
-            border: 1px solid rgba(168,138,46,0.20);
+            background: rgba(201,168,76,0.08); color: var(--gold);
+            border: 1px solid rgba(201,168,76,0.15);
         }
 
         /* COST CALCULATOR */
-        .calc-section { background: #f5f1e8; }
+        .calc-section { background: #0f0f0f; }
         .calc-wrap {
             max-width: 980px; margin: 0 auto;
             background: var(--dark-card);
-            border: 1px solid rgba(168,138,46,0.20);
+            border: 1px solid rgba(201,168,76,0.15);
             border-radius: 8px; padding: 2.5rem;
         }
         .calc-item {
             position: relative;
-            background: #faf7f1;
-            border: 1px solid rgba(168,138,46,0.16);
+            background: #0a0a0a;
+            border: 1px solid rgba(201,168,76,0.12);
             border-radius: 6px;
             padding: 1.5rem 1.75rem 1.25rem;
             margin-bottom: 1rem;
@@ -258,7 +258,7 @@
             text-transform: uppercase; color: var(--gold); font-weight: 600;
         }
         .calc-item-remove {
-            background: transparent; border: 1px solid rgba(168,138,46,0.35);
+            background: transparent; border: 1px solid rgba(201,168,76,0.25);
             color: var(--gray-light); width: 28px; height: 28px;
             border-radius: 50%; cursor: pointer; font-size: 1rem; line-height: 1;
             transition: all 0.2s;
@@ -266,12 +266,12 @@
         .calc-item-remove:hover { color: #ff6b6b; border-color: #ff6b6b; }
         .calc-item-subtotal {
             margin-top: 1rem; padding-top: 0.8rem;
-            border-top: 1px dashed rgba(168,138,46,0.16);
+            border-top: 1px dashed rgba(201,168,76,0.12);
             display: flex; justify-content: space-between;
             font-size: 0.9rem; color: var(--gray-light);
         }
         .calc-item-subtotal span:last-child {
-            color: #2a2420; font-weight: 600; font-variant-numeric: tabular-nums;
+            color: #fff; font-weight: 600; font-variant-numeric: tabular-nums;
         }
         .calc-grid {
             display: grid; grid-template-columns: 1fr 1fr 1fr;
@@ -286,8 +286,8 @@
         }
         .calc-field select, .calc-field input {
             width: 100%; padding: 0.7rem 0.85rem;
-            background: #ffffff; color: #2a2420;
-            border: 1px solid rgba(168,138,46,0.28);
+            background: #141414; color: #fff;
+            border: 1px solid rgba(201,168,76,0.2);
             border-radius: 4px; font-size: 0.88rem;
             font-family: inherit; transition: border-color 0.3s;
         }
@@ -305,11 +305,11 @@
             transition: all 0.3s;
         }
         .calc-add-btn:hover {
-            background: rgba(168,138,46,0.12); border-style: solid;
+            background: rgba(201,168,76,0.08); border-style: solid;
         }
         .calc-result { display: block; }
         .calc-block {
-            background: #faf7f1; border: 1px solid rgba(168,138,46,0.28);
+            background: #0a0a0a; border: 1px solid rgba(201,168,76,0.2);
             border-radius: 6px; padding: 1.25rem 1.75rem;
             margin-bottom: 1rem;
         }
@@ -323,18 +323,18 @@
             padding: 0.4rem 0; font-size: 0.88rem;
             color: var(--gray-light);
         }
-        .calc-row span:last-child { color: #2a2420; font-variant-numeric: tabular-nums; }
+        .calc-row span:last-child { color: #fff; font-variant-numeric: tabular-nums; }
         .calc-subtotal {
             display: flex; justify-content: space-between;
             margin-top: 0.6rem; padding-top: 0.7rem;
-            border-top: 1px solid rgba(168,138,46,0.20);
+            border-top: 1px solid rgba(201,168,76,0.15);
             font-size: 1rem; color: var(--gold); font-weight: 600;
         }
         .calc-subtotal span:last-child { font-variant-numeric: tabular-nums; }
         .calc-total {
             display: flex; justify-content: space-between; align-items: baseline;
             margin-top: 0.5rem; padding: 1.2rem 1.75rem;
-            background: linear-gradient(135deg, rgba(168,138,46,0.16), rgba(168,138,46,0.08));
+            background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
             border: 1px solid var(--gold); border-radius: 6px;
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem; color: var(--gold);
@@ -351,28 +351,28 @@
         .price-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
         .price-tab {
             padding: 0.7rem 1.5rem; border-radius: 4px;
-            background: var(--dark-card); border: 1px solid rgba(168,138,46,0.14);
+            background: var(--dark-card); border: 1px solid rgba(201,168,76,0.1);
             color: var(--gray-light); font-size: 0.8rem; font-weight: 500;
             cursor: pointer; transition: all 0.3s; letter-spacing: 0.5px;
         }
         .price-tab.active, .price-tab:hover {
-            background: rgba(168,138,46,0.14); border-color: var(--gold); color: var(--gold);
+            background: rgba(201,168,76,0.1); border-color: var(--gold); color: var(--gold);
         }
         .price-table-wrap {
             overflow-x: auto; border-radius: 8px;
-            border: 1px solid rgba(168,138,46,0.14);
+            border: 1px solid rgba(201,168,76,0.1);
         }
         .price-table {
             width: 100%; border-collapse: collapse; font-size: 0.78rem;
         }
         .price-table thead {
-            background: linear-gradient(135deg, rgba(168,138,46,0.16), rgba(168,138,46,0.08));
+            background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.05));
         }
         .price-table th {
             padding: 0.7rem 0.5rem; text-align: center;
             color: var(--gold); font-weight: 600;
             font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
-            border-bottom: 1px solid rgba(168,138,46,0.20);
+            border-bottom: 1px solid rgba(201,168,76,0.15);
         }
         .price-table th:first-child, .price-table td:first-child { text-align: left; }
         .price-table td {
@@ -380,18 +380,18 @@
             border-bottom: 1px solid rgba(255,255,255,0.03);
             text-align: center;
         }
-        .price-table tr:hover td { background: rgba(168,138,46,0.06); }
+        .price-table tr:hover td { background: rgba(201,168,76,0.03); }
         .quality-selector { display: flex; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
-.quality-btn { padding: 0.5rem 1rem; background: rgba(168,138,46,0.12); border: 1px solid rgba(168,138,46,0.28); color: #2a2420; font-size: 0.85rem; cursor: pointer; border-radius: 4px; transition: all 0.3s; font-family: 'Inter', sans-serif; }
-.quality-btn:hover { background: rgba(168,138,46,0.20); border-color: rgba(168,138,46,0.45); }
-.quality-btn.active { background: #c9a84c; color: #faf7f1; border-color: #c9a84c; }
+.quality-btn { padding: 0.5rem 1rem; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); color: #e0e0e0; font-size: 0.85rem; cursor: pointer; border-radius: 4px; transition: all 0.3s; font-family: 'Inter', sans-serif; }
+.quality-btn:hover { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.4); }
+.quality-btn.active { background: #c9a84c; color: #0a0a0a; border-color: #c9a84c; }
         
 
         .price-table .highlight { color: var(--gold); font-weight: 600; }
         .price-note {
             margin-top: 1.5rem; font-size: 0.8rem; color: var(--gray);
-            padding: 1rem 1.5rem; background: rgba(168,138,46,0.06);
-            border: 1px solid rgba(168,138,46,0.12); border-radius: 6px;
+            padding: 1rem 1.5rem; background: rgba(201,168,76,0.03);
+            border: 1px solid rgba(201,168,76,0.08); border-radius: 6px;
         }
         .price-note strong { color: var(--gold); }
 
@@ -399,14 +399,14 @@
         .quality-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         .quality-card {
             background: var(--dark-card);
-            border: 1px solid rgba(168,138,46,0.14);
+            border: 1px solid rgba(201,168,76,0.1);
             border-radius: 8px; padding: 2.5rem 2rem; text-align: center;
             transition: all 0.3s;
         }
         .quality-card:hover { border-color: rgba(201,168,76,0.3); }
         .quality-card.featured {
             border-color: var(--gold);
-            background: linear-gradient(180deg, rgba(168,138,46,0.08) 0%, var(--dark-card) 100%);
+            background: linear-gradient(180deg, rgba(201,168,76,0.05) 0%, var(--dark-card) 100%);
         }
         .quality-label {
             font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
@@ -420,7 +420,7 @@
         .quality-card ul { list-style: none; margin-top: 1.5rem; text-align: left; }
         .quality-card li {
             padding: 0.5rem 0; font-size: 0.85rem; color: var(--gray-light);
-            border-bottom: 1px solid rgba(0,0,0,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex; align-items: center; gap: 0.5rem;
         }
         .quality-card li::before { content: '\2726'; color: var(--gold); font-size: 0.6rem; }
@@ -430,7 +430,7 @@
         .color-groups { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         .color-group {
             background: var(--dark-card);
-            border: 1px solid rgba(168,138,46,0.14);
+            border: 1px solid rgba(201,168,76,0.1);
             border-radius: 8px; padding: 2rem; text-align: center;
         }
         .color-group h4 {
@@ -441,7 +441,7 @@
         .color-swatches { display: flex; justify-content: center; gap: 0.4rem; flex-wrap: wrap; }
         .swatch {
             width: 28px; height: 28px; border-radius: 50%;
-            border: 2px solid rgba(0,0,0,0.08);
+            border: 2px solid rgba(255,255,255,0.1);
             transition: transform 0.2s;
         }
         .swatch:hover { transform: scale(1.2); }
@@ -451,13 +451,13 @@
         .advantage-card {
             display: flex; gap: 1.5rem; align-items: flex-start;
             background: var(--dark-card);
-            border: 1px solid rgba(168,138,46,0.12);
+            border: 1px solid rgba(201,168,76,0.08);
             border-radius: 8px; padding: 2rem; transition: all 0.3s;
         }
-        .advantage-card:hover { border-color: rgba(168,138,46,0.28); }
+        .advantage-card:hover { border-color: rgba(201,168,76,0.2); }
         .advantage-num {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem; color: rgba(168,138,46,0.35);
+            font-size: 2rem; color: rgba(201,168,76,0.25);
             font-weight: 700; min-width: 45px;
         }
         .advantage-card h4 { color: var(--white); font-size: 1rem; margin-bottom: 0.5rem; }
@@ -465,10 +465,10 @@
 
         /* CTA */
         .cta-section {
-            background: linear-gradient(135deg, #ebe4d6, #faf7f1);
+            background: linear-gradient(135deg, #1a1510, #0a0a0a);
             text-align: center; padding: 5rem 2rem;
-            border-top: 1px solid rgba(168,138,46,0.14);
-            border-bottom: 1px solid rgba(168,138,46,0.14);
+            border-top: 1px solid rgba(201,168,76,0.1);
+            border-bottom: 1px solid rgba(201,168,76,0.1);
         }
         .cta-section h2 {
             font-family: 'Playfair Display', serif;
@@ -487,7 +487,7 @@
         .contact-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
         .contact-icon {
             width: 40px; height: 40px; min-width: 40px;
-            border-radius: 8px; background: rgba(168,138,46,0.12);
+            border-radius: 8px; background: rgba(201,168,76,0.08);
             display: flex; align-items: center; justify-content: center;
             color: var(--gold); font-size: 1rem;
         }
@@ -501,7 +501,7 @@
         }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%; padding: 0.85rem 1rem;
-            background: var(--dark); border: 1px solid rgba(0,0,0,0.06);
+            background: var(--dark); border: 1px solid rgba(255,255,255,0.08);
             border-radius: 6px; color: var(--white);
             font-family: 'Inter', sans-serif; font-size: 0.9rem;
             transition: border-color 0.3s;
@@ -514,7 +514,7 @@
 
         /* FOOTER */
         footer {
-            background: var(--dark); border-top: 1px solid rgba(168,138,46,0.14);
+            background: var(--dark); border-top: 1px solid rgba(201,168,76,0.1);
             padding: 3rem 2rem 1.5rem;
         }
         .footer-inner {
@@ -533,7 +533,7 @@
         .footer-links a:hover { color: var(--gold); }
         .footer-bottom {
             max-width: 1200px; margin: 2rem auto 0;
-            padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.04); text-align: center;
+            padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;
         }
         .footer-bottom p { font-size: 0.75rem; color: var(--gray); }
 
@@ -545,7 +545,7 @@
                 display: flex; flex-direction: column;
                 position: absolute; top: 100%; left: 0; right: 0;
                 background: var(--dark); padding: 2rem;
-                border-bottom: 1px solid rgba(168,138,46,0.20);
+                border-bottom: 1px solid rgba(201,168,76,0.15);
             }
             .about-grid, .contact-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2475,7 +2475,7 @@
                 <h4>Naturtöne</h4>
                 <p>#1, #1b</p>
                 <div class="color-swatches">
-                    <div class="swatch" style="background:#faf7f1;" title="#1 Tiefschwarz"></div>
+                    <div class="swatch" style="background:#0a0a0a;" title="#1 Tiefschwarz"></div>
                     <div class="swatch" style="background:#1a1a18;" title="#1b Naturschwarz"></div>
                 </div>
             </div>
@@ -2631,7 +2631,7 @@
                         <span><a href="https://www.instagram.com/diamond_vnexhair/" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: none;">@diamond_vnexhair</a></span>
                     </div>
                 </div>
-                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(168,138,46,0.08); border: 1px solid rgba(168,138,46,0.20); border-radius: 8px;">
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 8px;">
                     <p style="font-size: 0.85rem; color: var(--gray-light);">
                         <strong style="color: var(--gold);">Beratung auf Deutsch:</strong><br>
                         Wir beraten Sie persönlich auf Deutsch – schnell und unkompliziert. Nutzen Sie einfach das Kontaktformular oder schreiben Sie uns per WhatsApp.
