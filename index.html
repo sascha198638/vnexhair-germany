@@ -2396,11 +2396,18 @@
             </div>
 
             <div style="text-align:center; margin-top:1.75rem;">
-                <button type="button" class="btn btn-gold" style="padding:1rem 2.5rem; font-family:'Inter',sans-serif; font-size:0.85rem; letter-spacing:1px; text-transform:uppercase; cursor:pointer; border:none;" onclick="sendCalcToContact()">
-                    Unverbindliche Anfrage mit dieser Kalkulation senden
-                </button>
+                <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                    <button type="button" class="btn btn-gold" style="padding:1rem 2rem; font-family:'Inter',sans-serif; font-size:0.8rem; letter-spacing:1px; text-transform:uppercase; cursor:pointer; border:none; display:inline-flex; align-items:center; gap:0.6rem;" onclick="sendCalcToContact()">
+                        <span style="font-size:1.1rem;">&#9993;</span>
+                        Per E-Mail anfragen
+                    </button>
+                    <button type="button" class="btn btn-outline" style="padding:1rem 2rem; font-family:'Inter',sans-serif; font-size:0.8rem; letter-spacing:1px; text-transform:uppercase; cursor:pointer; display:inline-flex; align-items:center; gap:0.6rem;" onclick="sendCalcToWhatsApp()">
+                        <span style="font-size:1.1rem;">&#128172;</span>
+                        Per WhatsApp senden
+                    </button>
+                </div>
                 <p style="font-size:0.72rem; color:var(--gray); margin-top:0.8rem; font-style:italic;">
-                    Ihre Kalkulation wird automatisch ins Kontaktformular übernommen · keine Verpflichtung · Antwort innerhalb von 24&nbsp;Stunden
+                    Ihre Kalkulation wird automatisch übernommen · keine Verpflichtung · Antwort innerhalb von 24&nbsp;Stunden
                 </p>
             </div>
 
@@ -2597,8 +2604,10 @@
                 <div class="contact-item">
                     <div class="contact-icon">&#9742;</div>
                     <div>
-                        <strong>WhatsApp / Telefon</strong>
-                        <span>+84 97 6600 239</span>
+                        <strong>WhatsApp</strong>
+                        <a href="https://wa.me/84776513185" target="_blank" style="color:inherit; text-decoration:none;">
+                            <span>+84 776 513 185</span>
+                        </a>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -2631,7 +2640,13 @@
             </div>
 
             <div class="fade-in">
-                <form id="contactForm" onsubmit="handleSubmit(event)">
+                <form id="contactForm" action="https://formsubmit.co/schamber.etrade@gmail.com" method="POST">
+                    <!-- Formsubmit.co Konfiguration -->
+                    <input type="hidden" name="_subject" value="Neue B2B-Anfrage über vnexhair.de">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="true">
+                    <input type="hidden" name="_next" value="https://vnexhair.de/#kontakt">
+                    <input type="text" name="_honey" style="display:none">
                     <div class="form-row">
                         <div class="form-group">
                             <label>Salonname *</label>
@@ -2768,13 +2783,7 @@ function showTab(name) {
 }
 
 // Formular (Platzhalter)
-function handleSubmit(e) {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const info = Object.fromEntries(data.entries());
-    alert('Vielen Dank für Ihre Anfrage!\n\nWir melden uns innerhalb von 24 Stunden bei Ihnen.\n\nSalon: ' + info.salon + '\nKontakt: ' + info.name);
-    e.target.reset();
-}
+// Formular wird direkt an Formsubmit.co gepostet – kein JS nötig
 
 // Sanftes Scrollen
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2797,6 +2806,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    - DUTY_RATE: German import duty for HS 6703 (human hair) = 1.7%
    - VAT_RATE: German import VAT (EUSt) = 19%
    ============================================================ */
+// TODO: Später auf deutsche Business-Nummer umstellen (Satellite/sipgate)
+// Format: Ländervorwahl ohne "+" und ohne führende 0, z.B. "4915123456789"
+const WHATSAPP_NUMBER = "84776513185";
+
 const CALC_CONFIG = {
     DUTY_RATE: 0.017,   // 1,7 % Einfuhrzoll HS 6703
     VAT_RATE: 0.19,     // 19 % Einfuhrumsatzsteuer
@@ -3102,9 +3115,14 @@ const CALC_LABELS = {
     }
 };
 
-function sendCalcToContact() {
+function buildCalcMessage(mode) {
+    // mode = 'email' (ausführlich) oder 'whatsapp' (kompakt)
     const lines = [];
-    lines.push('Unverbindliche Anfrage zu folgender Kalkulation:');
+    if (mode === 'whatsapp') {
+        lines.push('*Anfrage über vnexhair.de*');
+    } else {
+        lines.push('Unverbindliche Anfrage zu folgender Kalkulation:');
+    }
     lines.push('');
 
     let totalKg = 0;
@@ -3124,8 +3142,12 @@ function sendCalcToContact() {
         totalGoods += lineGoods;
         totalKg += kg;
 
-        lines.push(`Produkt ${i + 1}: ${CALC_LABELS.product[p]} · ${CALC_LABELS.quality[q]} · ${CALC_LABELS.color[c]} · ${l} cm${CALC_LABELS.surcharge[s] || ''}`);
-        lines.push(`  Menge: ${fmtKg(kg)} · Preis: ${fmtEur(ppk)}/kg · Zwischensumme: ${fmtEur(lineGoods)}`);
+        if (mode === 'whatsapp') {
+            lines.push(`${i + 1}) ${CALC_LABELS.product[p]} ${CALC_LABELS.quality[q]} ${CALC_LABELS.color[c]} ${l}cm${CALC_LABELS.surcharge[s] || ''} – ${fmtKg(kg)} = ${fmtEur(lineGoods)}`);
+        } else {
+            lines.push(`Produkt ${i + 1}: ${CALC_LABELS.product[p]} · ${CALC_LABELS.quality[q]} · ${CALC_LABELS.color[c]} · ${l} cm${CALC_LABELS.surcharge[s] || ''}`);
+            lines.push(`  Menge: ${fmtKg(kg)} · Preis: ${fmtEur(ppk)}/kg · Zwischensumme: ${fmtEur(lineGoods)}`);
+        }
     });
 
     const ship = calcShipping(totalKg);
@@ -3135,25 +3157,43 @@ function sendCalcToContact() {
     const total = cif + duty + vat;
 
     lines.push('');
-    lines.push('— Kostenübersicht —');
-    lines.push(`Warenwert gesamt: ${fmtEur(totalGoods)}`);
-    lines.push(`Luftfracht (${fmtKg(totalKg)}): ${fmtEur(ship)}`);
-    lines.push(`An den Hersteller: ${fmtEur(cif)}`);
-    lines.push(`Einfuhrzoll 1,7 %: ${fmtEur(duty)}`);
-    lines.push(`EUSt 19 %: ${fmtEur(vat)}`);
-    lines.push(`An den deutschen Zoll: ${fmtEur(duty + vat)}`);
-    lines.push(`GESAMTKOSTEN: ${fmtEur(total)}`);
-    lines.push('');
-    lines.push('Bitte senden Sie mir ein konkretes Angebot. Vielen Dank!');
-
-    const textarea = document.querySelector('textarea[name="message"]');
-    if (textarea) {
-        textarea.value = lines.join('\n');
+    if (mode === 'whatsapp') {
+        lines.push(`Ware: ${fmtEur(totalGoods)}`);
+        lines.push(`Versand (${fmtKg(totalKg)}): ${fmtEur(ship)}`);
+        lines.push(`Zoll + EUSt: ${fmtEur(duty + vat)}`);
+        lines.push(`*Gesamt: ${fmtEur(total)}*`);
+        lines.push('');
+        lines.push('Bitte um ein konkretes Angebot. Danke!');
+    } else {
+        lines.push('— Kostenübersicht —');
+        lines.push(`Warenwert gesamt: ${fmtEur(totalGoods)}`);
+        lines.push(`Luftfracht (${fmtKg(totalKg)}): ${fmtEur(ship)}`);
+        lines.push(`An den Hersteller: ${fmtEur(cif)}`);
+        lines.push(`Einfuhrzoll 1,7 %: ${fmtEur(duty)}`);
+        lines.push(`EUSt 19 %: ${fmtEur(vat)}`);
+        lines.push(`An den deutschen Zoll: ${fmtEur(duty + vat)}`);
+        lines.push(`GESAMTKOSTEN: ${fmtEur(total)}`);
+        lines.push('');
+        lines.push('Bitte senden Sie mir ein konkretes Angebot. Vielen Dank!');
     }
 
+    return lines.join('\n');
+}
+
+function sendCalcToContact() {
+    const textarea = document.querySelector('textarea[name="message"]');
+    if (textarea) {
+        textarea.value = buildCalcMessage('email');
+    }
     const target = document.getElementById('kontakt');
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setTimeout(() => { textarea && textarea.focus(); }, 600);
+}
+
+function sendCalcToWhatsApp() {
+    const text = buildCalcMessage('whatsapp');
+    const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
+    window.open(url, '_blank');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
