@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f1a14"/>
+      <stop offset="1" stop-color="#2a2218"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7a5f16"/>
+      <stop offset="0.5" stop-color="#c9a84c"/>
+      <stop offset="1" stop-color="#a88a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#gold)"/>
+  <rect x="0" y="624" width="1200" height="6" fill="url(#gold)"/>
+  <g transform="translate(80,120)">
+    <text x="0" y="0" font-family="Georgia, serif" font-size="28" fill="#a88a2e" letter-spacing="6">PREMIUM ECHTHAAR EXTENSIONS</text>
+    <text x="0" y="120" font-family="Georgia, serif" font-size="96" font-weight="700" fill="#f5f0e8">VNEX<tspan fill="#c9a84c">HAIR</tspan></text>
+    <text x="0" y="180" font-family="Georgia, serif" font-size="42" font-style="italic" fill="#c9a84c">Direkt aus Vietnam. Fabrikpreise f&#252;r Salons.</text>
+    <line x1="0" y1="220" x2="280" y2="220" stroke="#a88a2e" stroke-width="3"/>
+    <text x="0" y="280" font-family="Helvetica, sans-serif" font-size="26" fill="#f0ebe0">Keratin Bonds  &#183;  Tape-In  &#183;  Tressen  &#183;  Bulk</text>
+    <text x="0" y="320" font-family="Helvetica, sans-serif" font-size="26" fill="#f0ebe0">100% Remy Echthaar  &#183;  Salon-Qualit&#228;t  &#183;  B2B</text>
+  </g>
+  <g transform="translate(960,470)">
+    <rect x="-140" y="-42" width="280" height="70" rx="35" fill="none" stroke="#c9a84c" stroke-width="2"/>
+    <text x="0" y="5" font-family="Georgia, serif" font-size="28" fill="#c9a84c" text-anchor="middle" letter-spacing="3">vnexhair.de</text>
+  </g>
+</svg>
